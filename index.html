@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Coding Crysis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main id="app">
+  <section id="splashScreen" class="screen active splash-screen" aria-label="Opening screen">
+    <div class="nebula n1"></div><div class="nebula n2"></div>
+    <div class="splash-content">
+      <div class="logo-scene" aria-hidden="true">
+        <div class="cloud"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="cb"></i><b></b><b></b><b></b></div>
+        <img class="shooting-star" src="assets/shooting-star.png" alt="">
+      </div>
+      <p class="eyebrow">WELCOME TO</p>
+      <h1>the coding crysis</h1>
+      <p class="tap-hint">Press anywhere to go forward</p>
+    </div>
+  </section>
+
+  <section id="codeScreen" class="screen code-screen">
+    <div class="editor">
+      <div class="editor-top"><div class="lights"><i></i><i></i><i></i></div><span>visitor_check.js</span><small>● secure mode</small></div>
+      <div class="editor-body">
+        <div class="numbers">1<br>2<br>3<br>4<br>5<br>6</div>
+        <div class="code-area">
+          <div class="code-row"><span class="prompt">&gt;</span><span id="questionText"></span><span id="cursor" class="cursor"></span></div>
+          <div class="code-row green"><span class="prompt">&gt;</span><span id="answerText"></span></div>
+          <div class="code-row lilac"><span class="prompt">&gt;</span><span id="processText"></span></div>
+        </div>
+      </div>
+      <div id="yesWrap" class="yes-wrap hidden"><button id="yesButton" type="button">Yes</button></div>
+    </div>
+  </section>
+
+  <section id="guideIntroScreen" class="screen guide-intro-screen">
+    <div class="guide-intro-content"><span class="spark s1">✦</span><span class="spark s2">✧</span><p class="eyebrow">TRAINING FILE 01</p><h2>How to avoid<br><em>phishing &amp; scamming</em></h2><p class="tap-hint">Click anywhere to begin</p></div>
+  </section>
+
+  <section id="guideScreen" class="screen guide-screen">
+    <div class="guide-layout">
+      <header class="guide-head"><div><p class="eyebrow">SECURITY GUIDE</p><h2>Learn the warning signs</h2></div><div class="progress-wrap"><span id="guideCounter">01 / 11</span><div class="progress"><i id="guideProgress"></i></div></div></header>
+      <div id="guideDeck" class="deck" tabindex="0" role="button" aria-label="Next guide card">
+        <div class="paper back2"></div><div class="paper back1"></div>
+        <article id="guideCard" class="paper guide-card"><span id="guideNumber" class="guide-number">01</span><h3 id="guideTitle"></h3><p id="guideBody"></p><footer><span>click to continue</span><b>↗</b></footer></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="categoryScreen" class="screen category-screen">
+    <div class="category-content"><p class="eyebrow">NOW IT'S YOUR TURN</p><h2>Choose a challenge</h2><p class="subtitle">Every round is randomized. Think before you click.</p>
+      <div class="category-grid">
+        <button class="category-card" data-category="messages"><strong>💬</strong><span>Messages</span><small>branching conversations</small></button>
+        <button class="category-card" data-category="emails"><strong>✉</strong><span>Emails</span><small>spot the phishing signs</small></button>
+        <button class="category-card" data-category="applications"><strong>▦</strong><span>Applications</span><small>permissions &amp; downloads</small></button>
+        <button class="category-card" data-category="websites"><strong>◎</strong><span>Websites</span><small>links, pop-ups &amp; fake pages</small></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="screen game-screen">
+    <div class="game-layout"><header class="game-head"><button id="backToCategories" class="ghost" type="button">← categories</button><div><b id="gameCategory">Messages</b><small id="roundLabel">random scenario</small></div></header><div id="scenarioHost"></div></div>
+  </section>
+
+  <section id="resultScreen" class="screen result-screen">
+    <div id="celebration" class="celebration" aria-hidden="true"><i>✦</i><i>✧</i><i>★</i><i>✦</i><i>✧</i><i>★</i><i>✦</i><i>✧</i></div>
+    <div id="resultPanel" class="result-panel">
+      <div id="resultIcon" class="result-icon">🛡️</div><p id="resultTag" class="eyebrow">RESULT</p><h2 id="resultTitle"></h2><p id="resultMessage" class="result-message"></p><p id="resultExplanation" class="result-explanation"></p>
+      <div class="result-actions"><button id="retryButton" class="main-btn" type="button">Try another scenario</button><button id="resultCategoriesButton" class="ghost" type="button">Choose another category</button></div>
+    </div>
+  </section>
+</main>
+<audio id="victorySound" src="assets/victory.mp3" preload="auto"></audio>
+<script src="script.js"></script>
+</body>
+</html>
