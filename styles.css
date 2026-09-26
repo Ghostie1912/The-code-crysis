@@ -1,0 +1,2561 @@
+:root{--night:#08030f;--violet:#8b5cf6;--soft:#ddd0eb;--paper:#fffaff;--green:#6ee7a4;--red:#ff728a}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"Segoe UI",Arial,sans-serif;background:var(--night);color:#fff}button{font:inherit;cursor:pointer}.screen{display:none;position:relative;min-height:100vh;width:100%;overflow:hidden}.screen.active{display:flex;animation:screenIn .65s cubic-bezier(.22,.75,.2,1) both}.hidden{display:none!important}@keyframes screenIn{from{opacity:0;transform:scale(1.018);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}.eyebrow{margin:0 0 12px;color:#cbb8ef;font-size:.72rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase}.tap-hint{margin-top:23px;color:#cbbfd8;animation:pulse 1.7s ease-in-out infinite}@keyframes pulse{50%{opacity:.35;transform:translateY(2px)}}
+.splash-screen,.guide-intro-screen,.category-screen,.result-screen{align-items:center;justify-content:center;background:radial-gradient(circle at 50% 12%,rgba(135,78,211,.23),transparent 32%),radial-gradient(circle at 10% 78%,rgba(81,45,145,.18),transparent 28%),linear-gradient(145deg,#07020e,#140721 53%,#080310)}.splash-screen,.guide-intro-screen{cursor:pointer}.splash-screen:before,.guide-intro-screen:before,.category-screen:before,.result-screen:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(255,255,255,.92) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(213,190,255,.76) 0 1px,transparent 1.7px),radial-gradient(circle,rgba(255,211,244,.7) 0 .9px,transparent 1.5px);background-size:73px 73px,127px 127px,181px 181px;background-position:6px 13px,31px 49px,73px 88px;opacity:.6;animation:stars 5s ease-in-out infinite alternate}@keyframes stars{from{opacity:.35}to{opacity:.8}}.nebula{position:absolute;width:360px;height:360px;border-radius:50%;filter:blur(75px);opacity:.18}.n1{left:-130px;top:8%;background:#8051ff}.n2{right:-120px;bottom:5%;background:#d16df0}.splash-content{z-index:2;text-align:center;padding:28px}.logo-scene{position:relative;width:315px;height:190px;margin:0 auto -5px}.cloud{position:absolute;left:50%;top:54%;width:180px;height:92px;transform:translate(-50%,-50%);filter:drop-shadow(0 18px 24px rgba(65,39,94,.3));animation:cloudFloat 4s ease-in-out infinite}.cloud i{position:absolute;display:block;background:linear-gradient(#d9cbf3,#a790d7)}.cloud .cb{left:8px;bottom:4px;width:164px;height:64px;border-radius:47px}.cloud .c1{left:24px;top:9px;width:72px;height:72px;border-radius:50%}.cloud .c2{left:72px;top:-5px;width:86px;height:86px;border-radius:50%}.cloud .c3{left:107px;top:17px;width:57px;height:57px;border-radius:50%}.cloud b{position:absolute;z-index:4;bottom:34px;width:11px;height:11px;border-radius:50%;background:#735e96}.cloud b:nth-of-type(1){left:59px}.cloud b:nth-of-type(2){left:82px}.cloud b:nth-of-type(3){left:105px}.shooting-star{position:absolute;width:175px;right:-31px;top:-2px;object-fit:contain;mix-blend-mode:screen;animation:starDrift 3.2s ease-in-out infinite}@keyframes cloudFloat{50%{transform:translate(-50%,-50%) translateY(-9px)}}@keyframes starDrift{50%{transform:translate(-9px,-10px) rotate(2deg)}}.splash-content h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,8vw,6.3rem);font-weight:500;letter-spacing:-.05em;text-transform:lowercase;text-shadow:0 0 35px rgba(170,125,255,.16)}
+.code-screen{align-items:center;justify-content:center;padding:34px;background:radial-gradient(circle at 80% 20%,rgba(118,64,194,.12),transparent 30%),#08070b}.code-screen:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:24px 24px}.editor{position:relative;width:min(1020px,95vw);min-height:610px;border:1px solid rgba(192,158,255,.16);border-radius:20px;overflow:hidden;background:rgba(10,8,14,.97);box-shadow:0 35px 95px rgba(0,0,0,.5)}.editor-top{height:52px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 18px;border-bottom:1px solid rgba(255,255,255,.07);background:#100e14;color:#958b9f;font:12px Consolas,"Courier New",monospace}.editor-top small{justify-self:end;color:#75a187}.lights{display:flex;gap:8px}.lights i{width:10px;height:10px;border-radius:50%;background:#7b4658}.lights i:nth-child(2){background:#8a7040}.lights i:nth-child(3){background:#457656}.editor-body{display:grid;grid-template-columns:62px 1fr;min-height:460px;padding:34px 0;font-family:Consolas,"Courier New",monospace}.numbers{color:#4e4654;text-align:right;padding-right:20px;border-right:1px solid rgba(255,255,255,.045);line-height:52px;user-select:none}.code-area{padding:0 32px}.code-row{min-height:52px;display:flex;gap:12px;color:#eadcff;font-size:clamp(.96rem,2vw,1.13rem);line-height:1.8}.prompt{color:#8258c8;font-weight:700}.green{color:#7cebad}.lilac{color:#bea7ec}.cursor{width:9px;height:1.25em;margin-top:.25em;background:#c8b2ef;animation:blink .85s steps(1) infinite}@keyframes blink{50%{opacity:0}}.yes-wrap{position:absolute;left:50%;bottom:34px;transform:translateX(-50%)}.yes-wrap button{width:155px;height:66px;border:1px solid rgba(255,255,255,.18);border-radius:14px;background:linear-gradient(#7cf0ae,#4fd58a);color:#07130c;font-weight:800;font-size:1.05rem;box-shadow:0 12px 32px rgba(69,214,134,.2);transition:.2s}.yes-wrap button:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 18px 40px rgba(69,214,134,.3)}
+.guide-intro-screen{background:radial-gradient(circle at 50% 45%,rgba(196,155,255,.25),transparent 28%),linear-gradient(145deg,#4f208c,#7e43c2 48%,#9e5dc5)}.guide-intro-content{z-index:2;position:relative;text-align:center;padding:30px}.guide-intro-content h2{margin:0;font:500 clamp(2.9rem,7vw,6rem)/.98 Georgia,"Times New Roman",serif;letter-spacing:-.04em}.guide-intro-content em{color:#f1ddff;font-weight:400}.spark{position:absolute;color:#f6e8ff;font-size:2rem;animation:sparkFloat 2.8s ease-in-out infinite}.s1{left:2%;top:-18%}.s2{right:2%;bottom:-18%;animation-delay:.7s}@keyframes sparkFloat{50%{transform:translateY(-8px) rotate(10deg);opacity:.55}}
+.guide-screen{align-items:center;justify-content:center;padding:38px 18px;background:radial-gradient(circle at 15% 15%,rgba(255,255,255,.08),transparent 24%),radial-gradient(circle at 86% 80%,rgba(236,171,255,.12),transparent 26%),linear-gradient(145deg,#51228d,#6f38ad 52%,#9651b9)}.guide-layout{width:min(940px,94vw)}.guide-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:26px}.guide-head h2{margin:0;font:500 clamp(2rem,4vw,3.2rem) Georgia,"Times New Roman",serif}.progress-wrap{width:min(230px,42vw);color:#e9dcf6;font-size:.8rem;text-align:right}.progress{height:4px;margin-top:9px;border-radius:999px;background:rgba(255,255,255,.15);overflow:hidden}.progress i{display:block;height:100%;width:9%;background:#f0e4ff;border-radius:inherit;transition:width .4s}.deck{position:relative;width:min(780px,100%);min-height:485px;margin:0 auto;cursor:pointer;perspective:1200px}.paper{position:absolute;inset:0;border:1px solid rgba(255,255,255,.2);border-radius:28px}.back2{background:rgba(255,255,255,.09);transform:translate(22px,22px) rotate(2deg) scale(.965);opacity:.42}.back1{background:rgba(255,255,255,.1);transform:translate(11px,11px) rotate(-1deg) scale(.985);opacity:.68}.guide-card{z-index:3;display:flex;flex-direction:column;padding:clamp(30px,5vw,58px);background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.075));backdrop-filter:blur(15px);box-shadow:0 35px 80px rgba(39,12,65,.28),inset 0 1px rgba(255,255,255,.17);overflow:auto}.guide-number{color:#d7c2f4;font-size:.8rem;font-weight:800;letter-spacing:.18em}.guide-card h3{margin:18px 0 20px;max-width:690px;font:500 clamp(2rem,4.5vw,3.5rem)/1.04 Georgia,"Times New Roman",serif}.guide-card p{margin:0;max-width:680px;color:#fbf8ff;font-size:clamp(1rem,2vw,1.1rem);line-height:1.78;white-space:pre-line}.guide-card footer{margin-top:auto;padding-top:32px;display:flex;align-items:center;justify-content:space-between;color:#d9cbed;font-size:.84rem;text-transform:uppercase;letter-spacing:.15em}.guide-card footer b{font-size:1.55rem}.guide-card.exit{animation:cardExit .43s forwards}.guide-card.enter{animation:cardEnter .5s both}@keyframes cardExit{to{transform:translate(-120px,-25px) rotate(-7deg) scale(.96);opacity:0}}@keyframes cardEnter{from{transform:translate(55px,28px) rotate(3deg) scale(.96);opacity:0}to{transform:none;opacity:1}}
+.category-content{z-index:2;width:min(920px,92vw);text-align:center;padding:44px 0}.category-content h2{margin:0;font:500 clamp(3rem,7vw,5.7rem) Georgia,"Times New Roman",serif;letter-spacing:-.04em}.subtitle{margin:15px auto 34px;color:#cbbdd5}.category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.category-card{min-height:190px;padding:28px;display:flex;flex-direction:column;align-items:flex-start;justify-content:end;text-align:left;border:1px solid rgba(204,168,255,.2);border-radius:24px;color:#fff;background:radial-gradient(circle at 85% 18%,rgba(176,132,255,.15),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.035));box-shadow:inset 0 1px rgba(255,255,255,.055);transition:.22s}.category-card:hover{transform:scale(1.045) translateY(-3px);border-color:rgba(210,181,255,.58);background:radial-gradient(circle at 85% 18%,rgba(176,132,255,.25),transparent 32%),linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.055));box-shadow:0 18px 38px rgba(0,0,0,.16)}.category-card strong{margin-bottom:auto;color:#d8c0ff;font-size:2.15rem}.category-card span{font:500 2rem Georgia,"Times New Roman",serif}.category-card small{margin-top:5px;color:#aa9caf;font-size:.83rem}
+.game-screen{justify-content:center;padding:30px 16px 55px;background:radial-gradient(circle at 75% 10%,rgba(117,68,184,.12),transparent 28%),linear-gradient(#09060f,#0e0816);overflow:auto}.game-layout{width:min(980px,95vw)}.game-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.game-head>div{text-align:right}.game-head b{display:block;color:#f0e7fa}.game-head small{color:#776b81}.ghost,.main-btn,.choice{border:0;color:#fff}.ghost{padding:11px 15px;border:1px solid rgba(255,255,255,.11);border-radius:12px;background:rgba(255,255,255,.055)}.scenario-shell{border:1px solid rgba(255,255,255,.09);border-radius:26px;background:rgba(255,255,255,.035);box-shadow:0 28px 65px rgba(0,0,0,.18);overflow:hidden}.scenario-top{padding:28px 30px 18px;border-bottom:1px solid rgba(255,255,255,.07)}.scenario-top h2{margin:0 0 7px;font:500 clamp(2rem,4vw,3rem) Georgia,"Times New Roman",serif}.scenario-top p{margin:0;color:#a99db1}.scenario-content{padding:28px}.choices{display:grid;gap:11px;margin-top:24px}.choice{width:100%;padding:15px 17px;text-align:left;border:1px solid rgba(196,159,255,.16);border-radius:14px;background:#191020;line-height:1.45;transition:.17s}.choice:hover{transform:translateX(4px);border-color:rgba(196,159,255,.44);background:#21132d}
+.phone-frame{width:min(430px,100%);margin:0 auto;padding:8px;border-radius:44px;background:linear-gradient(145deg,#3b3940,#121114);box-shadow:0 30px 58px rgba(0,0,0,.27)}.phone-screen{min-height:510px;display:flex;flex-direction:column;overflow:hidden;border-radius:36px;color:#161616;background:#f7f7f8}.notch{width:105px;height:25px;margin:9px auto -3px;border-radius:999px;background:#0c0c0d}.contact{padding:8px 14px 13px;text-align:center;border-bottom:1px solid #dedee2}.avatar{width:38px;height:38px;margin:0 auto 5px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#c7b3ef,#9a7fd0);color:#fff;font-weight:800}.contact-name{font-size:.85rem;font-weight:700}.message-area{flex:1;padding:18px 13px 12px}.bubble{width:fit-content;max-width:79%;margin:7px 0;padding:9px 13px 10px;border-radius:19px;line-height:1.35;font-size:.95rem}.bubble.them{margin-right:auto;background:#e4e4e7;border-bottom-left-radius:6px}.bubble.me{margin-left:auto;color:#fff;background:#2f80ed;border-bottom-right-radius:6px}.typing-img{display:block;width:90px;margin:7px auto 7px 0;opacity:.82;mix-blend-mode:multiply}.compose{margin:5px 10px 12px;padding:8px 13px;border:1px solid #d7d7db;border-radius:999px;color:#aaa;font-size:.84rem}
+.mail,.browser{overflow:hidden;border-radius:18px;color:#232323;background:#fff;box-shadow:0 22px 45px rgba(0,0,0,.16)}.mail-top{height:44px;padding:0 16px;display:flex;align-items:center;gap:8px;background:#f3f3f5;border-bottom:1px solid #ddd}.mail-top i{width:10px;height:10px;border-radius:50%;background:#c9c9ce}.mail-head{padding:22px 24px 13px;border-bottom:1px solid #ececef}.mail-head h3{margin:0 0 12px}.mail-meta{color:#666;font-size:.9rem}.mail-body{padding:25px;line-height:1.7}.fake-link{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:8px;color:#fff;background:#2e6edb}.app-preview{width:min(560px,100%);margin:0 auto;padding:26px;border-radius:23px;color:#17151a;background:linear-gradient(160deg,#fff,#f0edf6);box-shadow:0 25px 50px rgba(0,0,0,.18)}.app-row{display:flex;gap:16px;align-items:center}.app-icon{width:78px;height:78px;display:grid;place-items:center;border-radius:20px;color:#59359c;background:linear-gradient(145deg,#e7dcff,#c7aff9);font-size:2rem}.app-row h3{margin:0}.app-row p{margin:4px 0 0;color:#777}.perm{margin-top:22px;padding:18px;border-radius:15px;background:#e8e5ed}.perm h4{margin:0 0 10px}.perm ul{margin:0;padding-left:22px;line-height:1.75}.browser-top{padding:12px;background:#e9e9ed;border-bottom:1px solid #d4d4d8}.url{padding:10px 14px;border-radius:10px;background:#fff;font:13px Consolas,monospace;overflow-wrap:anywhere}.site-page{min-height:310px;padding:40px 25px;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#f8f7fb)}.alert{width:min(540px,100%);padding:25px;text-align:center;border:1px solid #ffc1cb;border-radius:16px;background:#fff0f3;color:#6f1d2c}.alert h3{margin:0 0 10px;font-size:1.55rem}.fake-download{display:inline-block;margin-top:8px;padding:11px 15px;border-radius:9px;color:#fff;background:#e53e57;font-weight:800}
+.result-panel{z-index:3;width:min(650px,92vw);padding:48px 40px;text-align:center;border:1px solid rgba(255,255,255,.13);border-radius:28px;background:rgba(255,255,255,.065);backdrop-filter:blur(15px);box-shadow:0 30px 70px rgba(0,0,0,.22)}.result-panel.success{border-color:rgba(98,227,154,.34);box-shadow:0 30px 90px rgba(84,225,155,.12)}.result-panel.fail{border-color:rgba(255,111,134,.34)}.result-icon{font-size:4.3rem;line-height:1;margin-bottom:18px}.result-panel.success .result-icon{animation:shieldPop .7s cubic-bezier(.2,.9,.2,1.2)}@keyframes shieldPop{0%{transform:scale(.25) rotate(-10deg);opacity:0}70%{transform:scale(1.13) rotate(3deg)}100%{transform:scale(1)}}.result-panel h2{margin:0;font:500 clamp(2.4rem,6vw,4.5rem) Georgia,"Times New Roman",serif}.result-message{margin:14px 0 0;color:#e1d5ea;font-size:1.08rem}.result-explanation{margin:24px 0 0;padding:17px;border-radius:14px;color:#c5b8ce;background:rgba(0,0,0,.16);line-height:1.6}.result-actions{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.main-btn{padding:12px 17px;border-radius:12px;color:#130c1d;background:#d4bbff;font-weight:800}.celebration{display:none;position:absolute;inset:0;z-index:2;pointer-events:none}.celebration.on{display:block}.celebration i{position:absolute;font-style:normal;color:#e9d6ff;font-size:clamp(1.2rem,3vw,2.1rem);animation:burst 1.7s ease-out both}.celebration i:nth-child(1){left:15%;top:22%}.celebration i:nth-child(2){left:28%;top:12%;animation-delay:.12s}.celebration i:nth-child(3){right:21%;top:17%;animation-delay:.2s}.celebration i:nth-child(4){right:10%;top:36%;animation-delay:.08s}.celebration i:nth-child(5){left:11%;bottom:24%;animation-delay:.24s}.celebration i:nth-child(6){right:26%;bottom:16%;animation-delay:.16s}.celebration i:nth-child(7){left:35%;bottom:9%;animation-delay:.3s}.celebration i:nth-child(8){right:38%;top:8%;animation-delay:.1s}@keyframes burst{0%{opacity:0;transform:scale(.1) rotate(0)}45%{opacity:1;transform:scale(1.25) rotate(20deg)}100%{opacity:.2;transform:scale(.8) translateY(-18px) rotate(55deg)}}
+@media(max-width:700px){.code-screen{padding:18px}.editor{min-height:560px}.editor-top{grid-template-columns:1fr auto}.editor-top small{display:none}.editor-body{grid-template-columns:44px 1fr}.numbers{padding-right:12px}.code-area{padding:0 18px}.guide-head{align-items:flex-start;flex-direction:column}.progress-wrap{width:100%;text-align:left}.deck{min-height:540px}.category-grid{grid-template-columns:1fr}.category-card{min-height:145px}.scenario-content{padding:18px}.result-panel{padding:38px 22px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* =========================================================
+   TUTORIAL NAVIGATION
+   Added: skip tutorial, back to intro, previous/next notes
+   ========================================================= */
+
+.tutorial-nav{
+  position:absolute;
+  top:20px;
+  left:22px;
+  right:22px;
+  z-index:30;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  pointer-events:none;
+}
+
+.tutorial-nav .tutorial-control{
+  pointer-events:auto;
+}
+
+.intro-only-nav{
+  justify-content:flex-end;
+}
+
+.tutorial-control,
+.guide-nav-button{
+  min-height:42px;
+  padding:10px 15px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;
+  color:#f4ebff;
+  background:rgba(14,8,24,.48);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 24px rgba(0,0,0,.13);
+  font-weight:700;
+  font-size:.86rem;
+  letter-spacing:.01em;
+  transition:transform .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
+}
+
+.tutorial-control:hover,
+.guide-nav-button:hover:not(:disabled){
+  transform:translateY(-2px);
+  background:rgba(42,22,61,.72);
+  border-color:rgba(218,192,255,.42);
+}
+
+.tutorial-control:active,
+.guide-nav-button:active:not(:disabled){
+  transform:translateY(0) scale(.98);
+}
+
+.category-back-wrap{
+  position:absolute;
+  left:22px;
+  top:20px;
+  z-index:30;
+}
+
+.guide-page-nav{
+  width:min(780px,100%);
+  margin:28px auto 0;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.guide-nav-button{
+  min-width:150px;
+  background:rgba(255,255,255,.08);
+}
+
+.guide-nav-primary{
+  background:rgba(226,205,255,.16);
+}
+
+.guide-nav-button:disabled{
+  opacity:.32;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.guide-card.exit-back{
+  animation:cardExitBack .4s ease forwards;
+}
+
+.guide-card.enter-back{
+  animation:cardEnterBack .45s ease both;
+}
+
+@keyframes cardExitBack{
+  to{
+    transform:translate(110px,-18px) rotate(6deg) scale(.97);
+    opacity:0;
+  }
+}
+
+@keyframes cardEnterBack{
+  from{
+    transform:translate(-55px,24px) rotate(-3deg) scale(.97);
+    opacity:0;
+  }
+  to{
+    transform:none;
+    opacity:1;
+  }
+}
+
+@media(max-width:700px){
+  .tutorial-nav{
+    top:12px;
+    left:12px;
+    right:12px;
+  }
+
+  .tutorial-control{
+    min-height:38px;
+    padding:8px 11px;
+    font-size:.76rem;
+  }
+
+  .category-back-wrap{
+    top:12px;
+    left:12px;
+  }
+
+  .guide-screen{
+    padding-top:78px;
+  }
+
+  .guide-page-nav{
+    margin-top:20px;
+  }
+
+  .guide-nav-button{
+    min-width:0;
+    flex:1;
+    padding:10px 9px;
+    font-size:.78rem;
+  }
+}
+
+
+/* =========================================================
+   MINIGAMES SECTION
+   ========================================================= */
+
+.section-switch-row{
+  margin-top:30px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:14px;
+  color:#91839b;
+  font-size:.86rem;
+}
+.section-arrow{
+  border:1px solid rgba(215,185,255,.22);
+  border-radius:999px;
+  padding:11px 17px;
+  color:#f5ecff;
+  background:rgba(255,255,255,.065);
+  font-weight:800;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.section-arrow span{display:inline-block;margin-left:8px;transition:transform .2s ease}
+.section-arrow:hover{transform:translateY(-2px);border-color:rgba(215,185,255,.52);background:rgba(141,92,246,.13)}
+.section-arrow:hover span{transform:translateX(4px)}
+.minigame-jump{border-color:rgba(190,154,255,.24)}
+
+.minigames-screen,
+.minigame-play-screen{
+  justify-content:center;
+  padding:70px 18px 55px;
+  background:radial-gradient(circle at 75% 8%,rgba(121,70,191,.16),transparent 28%),radial-gradient(circle at 15% 75%,rgba(196,83,197,.08),transparent 28%),linear-gradient(145deg,#08040e,#13071f 55%,#090410);
+  overflow:auto;
+}
+.minigames-layout,.minigame-play-layout{width:min(1040px,95vw);position:relative;z-index:2}
+.minigames-topline,.minigame-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.minigame-nav{position:absolute;top:18px;left:22px;right:22px;z-index:40;margin:0;pointer-events:none}
+.minigame-nav>*{pointer-events:auto}
+.mini-kicker,.pixel-tag,.case-file-chip{font:800 .72rem Consolas,monospace;letter-spacing:.18em;color:#cdb8ef;border:1px solid rgba(205,184,239,.17);padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04)}
+.minigames-title-wrap{text-align:center;margin:20px auto 34px}
+.minigames-title-wrap h2,.mini-game-heading h2{margin:0;font:500 clamp(3rem,7vw,5.7rem) Georgia,"Times New Roman",serif;letter-spacing:-.04em}
+.minigames-title-wrap>p:last-child{color:#a99daf;margin-top:10px}
+.minigame-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.minigame-card{
+  min-height:330px;padding:25px;border:1px solid rgba(210,177,255,.16);border-radius:25px;color:white;text-align:left;display:flex;flex-direction:column;align-items:flex-start;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.025));position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.minigame-card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-70px;top:-70px;filter:blur(10px);opacity:.13;background:#a36cff}
+.minigame-card:hover{transform:translateY(-7px) scale(1.015);border-color:rgba(217,192,255,.48);box-shadow:0 22px 50px rgba(0,0,0,.2)}
+.mini-number{font:700 .72rem Consolas,monospace;color:#84758e;letter-spacing:.15em}
+.mini-pixel-icon{font:800 3.8rem Consolas,monospace;color:#d8c0ff;text-shadow:4px 4px 0 rgba(111,62,166,.24);margin:auto 0 18px}
+.mini-name{font:500 2rem Georgia,"Times New Roman",serif;line-height:1.05}
+.minigame-card small{margin-top:9px;color:#a99daf;line-height:1.55}
+.detective-card:before{background:#c68dff}.dodge-card:before{background:#ff6c9e}.maze-card:before{background:#6d8dff}
+
+.mini-game-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:15px 0 24px}
+.mini-game-heading h2{font-size:clamp(2.5rem,6vw,4.8rem)}
+.arcade-layout{max-width:980px}
+
+/* Detective */
+.detective-intro{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px;padding:18px 20px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.035)}
+.detective-intro strong{font:500 1.45rem Georgia,"Times New Roman",serif}.detective-intro p{color:#aaa0b2;margin:7px 0 0;line-height:1.55;max-width:760px}
+.evidence-scroll{overflow-x:auto;padding:7px 2px 18px}
+.evidence-board{position:relative;width:920px;height:520px;margin:auto;border:1px solid rgba(216,185,255,.13);border-radius:24px;background:radial-gradient(circle at 40% 40%,rgba(128,71,187,.09),transparent 35%),linear-gradient(160deg,#100816,#0b0710);box-shadow:inset 0 0 80px rgba(0,0,0,.25)}
+.evidence-board:before{content:"CASE BOARD";position:absolute;right:20px;bottom:15px;font:800 3rem Consolas,monospace;color:rgba(255,255,255,.025);letter-spacing:.08em}
+.evidence-lines{position:absolute;inset:0;width:920px;height:520px;pointer-events:none;z-index:1}
+.evidence-lines line{stroke:#8053b8;stroke-width:2;stroke-dasharray:7 7;opacity:.68;animation:lineDraw .9s ease both}
+@keyframes lineDraw{from{stroke-dashoffset:90;opacity:0}to{stroke-dashoffset:0;opacity:.68}}
+.evidence-card{position:absolute;z-index:2;min-height:116px;padding:14px 15px;border:1px solid rgba(229,208,255,.18);border-radius:12px;background:#e9ddc8;color:#21162a;box-shadow:8px 10px 22px rgba(0,0,0,.22);transform:rotate(-.7deg);animation:evidenceIn .5s ease both}
+.evidence-card:nth-child(even){transform:rotate(.8deg);background:#dfd2ba}
+@keyframes evidenceIn{from{opacity:0;transform:scale(.84) rotate(3deg)}to{opacity:1}}
+.evidence-card span{font:800 .64rem Consolas,monospace;letter-spacing:.13em;color:#765c76}.evidence-card h3{font:700 1rem Georgia,"Times New Roman",serif;margin:8px 0 6px}.evidence-card p{margin:0;font-size:.8rem;line-height:1.45;color:#493a4c;overflow-wrap:anywhere}
+.detective-report{margin-top:22px;padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.04)}
+.report-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:18px}.report-heading span{font:800 .78rem Consolas,monospace;letter-spacing:.16em;color:#d5c0f1}.report-heading small{color:#8d8296}
+.detective-report label{display:block;margin:15px 0;color:#e9dff0;font-size:.91rem;font-weight:700}.detective-report textarea,.detective-report input{display:block;width:100%;margin-top:8px;padding:13px 14px;border:1px solid rgba(223,199,255,.15);border-radius:12px;color:#f7efff;background:#0d0812;font:inherit;font-weight:400;resize:vertical}.detective-report textarea:focus,.detective-report input:focus{outline:2px solid rgba(180,139,239,.45);border-color:transparent}
+.scan-button{margin-top:5px;padding:13px 18px;border:1px solid rgba(118,238,173,.25);border-radius:12px;background:#5ee19b;color:#092015;font-weight:900;letter-spacing:.08em}
+.scan-result{margin-top:18px}.scan-result:empty{display:none}.scan-result{padding:18px;border-radius:15px;border:1px solid rgba(255,255,255,.1);background:#0e0914}.scan-success{border-color:rgba(94,225,155,.35)}.scan-keep-looking{border-color:rgba(255,191,94,.25)}.scan-status{display:flex;justify-content:space-between;gap:15px;align-items:center}.scan-success .scan-status b{color:#70efad}.scan-keep-looking .scan-status b{color:#ffca75}.scan-status span{color:#8f8398;font-size:.85rem}.scan-lines{display:grid;gap:7px;margin:15px 0;color:#d8ccdf;font-size:.9rem}.scan-result p{margin:0;color:#a69aac;line-height:1.55}
+
+/* Arcade shared */
+.arcade-hud,.maze-hud{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}.arcade-hud span,.maze-hud span{padding:8px 11px;border:1px solid rgba(255,255,255,.09);border-radius:9px;background:rgba(255,255,255,.04);font:700 .78rem Consolas,monospace;color:#92869c}.arcade-hud b,.maze-hud b{color:#e6d8f6;margin-left:5px}
+.canvas-shell{position:relative;width:100%;border:1px solid rgba(213,177,255,.16);border-radius:20px;overflow:hidden;background:#09050f;box-shadow:0 28px 70px rgba(0,0,0,.23)}
+.canvas-shell canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
+.game-overlay{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:rgba(8,4,14,.68);backdrop-filter:blur(5px);transition:opacity .22s ease}
+.game-overlay.hidden-overlay{opacity:0;pointer-events:none}
+.overlay-card{width:min(430px,92%);padding:28px;text-align:center;border:1px solid rgba(220,193,255,.18);border-radius:20px;background:rgba(19,10,29,.95);box-shadow:0 22px 55px rgba(0,0,0,.32)}
+.overlay-card .mini-pixel-icon{display:block;margin:0 0 9px;font-size:2.8rem}.overlay-card h3{margin:0;font:500 2rem Georgia,"Times New Roman",serif}.overlay-card p{color:#a99daf;line-height:1.6}.overlay-card .main-btn{border:0}
+.mobile-move-controls{display:flex;justify-content:center;gap:15px;margin-top:15px}.mobile-move-controls button,.maze-pad button{width:64px;height:50px;border:1px solid rgba(216,187,255,.16);border-radius:12px;color:#e8ddf4;background:#1b1026;font-size:1.2rem;font-weight:900}.mobile-move-controls button:active,.maze-pad button:active{background:#42245e;transform:scale(.97)}
+
+/* Maze */
+.maze-door-legend{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 12px}.door-key{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(210,179,255,.12);border-radius:10px;background:rgba(255,255,255,.035);min-width:0}.door-key span{font:800 .72rem Consolas,monospace;color:#bfa8dc;white-space:nowrap}.door-key code{color:#ece2f6;overflow-wrap:anywhere;font-size:.85rem}.maze-canvas-shell{max-width:816px;margin:auto}.maze-message{text-align:center;color:#b8aabe;min-height:24px}.maze-pad{text-align:center;margin-top:12px}.maze-pad>button{display:block;margin:0 auto 7px}.maze-pad>div{display:flex;justify-content:center;gap:7px}
+
+@media(max-width:850px){
+  .minigame-grid{grid-template-columns:1fr}.minigame-card{min-height:220px}.mini-pixel-icon{margin:35px 0 15px}.mini-game-heading{align-items:flex-start;flex-direction:column}.detective-intro{flex-direction:column}.report-heading{align-items:flex-start;flex-direction:column}.section-switch-row{justify-content:center}.section-switch-label{display:none}
+}
+@media(max-width:700px){
+  .minigames-screen,.minigame-play-screen{padding-top:80px}.minigame-nav{top:12px;left:12px;right:12px}.minigame-nav .tutorial-control,.minigame-nav .ghost{font-size:.75rem;padding:8px 10px}.minigames-topline{margin-top:8px}.mini-name{font-size:1.65rem}.detective-report{padding:17px}.scan-status{align-items:flex-start;flex-direction:column}.maze-door-legend{grid-template-columns:1fr}.mobile-move-controls button,.maze-pad button{width:58px;height:48px}
+}
+
+
+/* =========================================================
+   DETECTIVE CASE FILES — STORY WHOOSH MODE
+   ========================================================= */
+
+.case-journey{
+  margin-top:18px;
+}
+
+.case-stage{
+  position:relative;
+  width:100%;
+  height:470px;
+  overflow:hidden;
+  border:1px solid rgba(216,185,255,.14);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(135,72,194,.10),transparent 35%),
+    linear-gradient(160deg,#100816,#08050d);
+  box-shadow:inset 0 0 95px rgba(0,0,0,.34),0 24px 60px rgba(0,0,0,.18);
+}
+
+.case-stage:before{
+  content:"CASE RECONSTRUCTION";
+  position:absolute;
+  right:20px;
+  bottom:15px;
+  z-index:1;
+  font:800 2.6rem Consolas,monospace;
+  letter-spacing:.08em;
+  color:rgba(255,255,255,.025);
+  pointer-events:none;
+}
+
+.case-world{
+  position:absolute;
+  left:0;
+  top:0;
+  width:1260px;
+  height:760px;
+  transform-origin:0 0;
+  transition:transform .62s cubic-bezier(.19,.84,.22,1);
+  will-change:transform;
+}
+
+.case-world.camera-instant{
+  transition:none !important;
+}
+
+.case-path-lines{
+  position:absolute;
+  inset:0;
+  width:1260px;
+  height:760px;
+  z-index:1;
+  pointer-events:none;
+}
+
+.case-path-line{
+  stroke:#a875e4;
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-dasharray:10 9;
+  opacity:.78;
+  animation:caseLineReveal .65s ease var(--line-delay,0ms) both;
+}
+
+@keyframes caseLineReveal{
+  from{
+    opacity:0;
+    stroke-dashoffset:90;
+  }
+  to{
+    opacity:.78;
+    stroke-dashoffset:0;
+  }
+}
+
+.case-story-card{
+  position:absolute;
+  z-index:2;
+  min-height:118px;
+  padding:15px 16px;
+  border:1px solid rgba(90,60,91,.26);
+  border-radius:12px;
+  color:#21162a;
+  background:#eadfca;
+  box-shadow:10px 15px 30px rgba(0,0,0,.30);
+  opacity:0;
+  transform:scale(.76) rotate(-2deg);
+  filter:blur(5px);
+  transition:
+    opacity .34s ease,
+    transform .5s cubic-bezier(.15,.8,.2,1),
+    filter .36s ease,
+    box-shadow .3s ease;
+}
+
+.case-story-card:nth-child(even){
+  background:#dfd1ba;
+  transform:scale(.76) rotate(2deg);
+}
+
+.case-story-card.case-card-revealed{
+  opacity:.44;
+  filter:blur(0);
+  transform:scale(.94) rotate(-.6deg);
+}
+
+.case-story-card.case-card-revealed:nth-child(even){
+  transform:scale(.94) rotate(.7deg);
+}
+
+.case-story-card.case-card-current{
+  opacity:1;
+  transform:scale(1.07) rotate(-.4deg);
+  box-shadow:
+    0 0 0 3px rgba(192,149,255,.18),
+    12px 18px 38px rgba(0,0,0,.42);
+}
+
+.case-story-card.case-card-current:nth-child(even){
+  transform:scale(1.07) rotate(.4deg);
+}
+
+.case-story-card span{
+  display:block;
+  color:#725979;
+  font:800 .64rem Consolas,monospace;
+  letter-spacing:.13em;
+}
+
+.case-story-card h3{
+  margin:9px 0 7px;
+  font:700 1.03rem Georgia,"Times New Roman",serif;
+}
+
+.case-story-card p{
+  margin:0;
+  color:#493a4c;
+  font-size:.82rem;
+  line-height:1.47;
+  overflow-wrap:anywhere;
+}
+
+.whoosh-flash{
+  position:absolute;
+  inset:0;
+  z-index:8;
+  display:grid;
+  place-items:center;
+  opacity:0;
+  pointer-events:none;
+  overflow:hidden;
+  background:linear-gradient(105deg,transparent 20%,rgba(210,174,255,.08) 48%,rgba(255,255,255,.12) 50%,rgba(210,174,255,.08) 52%,transparent 80%);
+  transform:translateX(-115%);
+}
+
+.whoosh-flash span{
+  position:relative;
+  z-index:2;
+  color:rgba(244,227,255,.68);
+  font:900 1rem Consolas,monospace;
+  letter-spacing:.4em;
+  text-shadow:0 0 18px rgba(189,134,255,.65);
+}
+
+.whoosh-flash i{
+  position:absolute;
+  height:2px;
+  width:44%;
+  background:linear-gradient(90deg,transparent,rgba(223,192,255,.75),transparent);
+  transform:rotate(-12deg);
+}
+
+.whoosh-flash i:nth-of-type(1){top:28%;left:6%}
+.whoosh-flash i:nth-of-type(2){top:52%;right:4%;transform:rotate(8deg)}
+.whoosh-flash i:nth-of-type(3){bottom:24%;left:20%;transform:rotate(-5deg)}
+
+.whoosh-flash.whoosh-on{
+  animation:detectiveWhoosh .55s cubic-bezier(.2,.75,.25,1) both;
+}
+
+@keyframes detectiveWhoosh{
+  0%{
+    opacity:0;
+    transform:translateX(-115%);
+  }
+  26%{
+    opacity:1;
+  }
+  62%{
+    opacity:.9;
+  }
+  100%{
+    opacity:0;
+    transform:translateX(115%);
+  }
+}
+
+.case-step-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:15px;
+  padding:15px 17px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+}
+
+.case-step-controls>div{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.case-story-label{
+  color:#8f8299;
+  font:800 .64rem Consolas,monospace;
+  letter-spacing:.15em;
+}
+
+#caseStepLabel{
+  color:#e8dcef;
+  font-size:.92rem;
+}
+
+.case-next-button{
+  margin-top:0;
+  min-width:175px;
+}
+
+.case-next-button:disabled{
+  opacity:.65;
+  cursor:default;
+}
+
+.case-overview .case-story-card.case-card-revealed{
+  opacity:.92;
+}
+
+.case-overview .case-story-card.case-card-current{
+  transform:scale(1) rotate(0);
+}
+
+.detective-report-hidden{
+  display:none;
+}
+
+.detective-report-show{
+  display:block;
+  animation:detectiveReportIn .55s ease both;
+}
+
+@keyframes detectiveReportIn{
+  from{
+    opacity:0;
+    transform:translateY(24px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+@media(max-width:700px){
+  .case-stage{
+    height:430px;
+  }
+
+  .case-step-controls{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .case-next-button{
+    width:100%;
+  }
+
+  .case-stage:before{
+    font-size:1.6rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .case-world,
+  .case-story-card{
+    transition:none !important;
+  }
+
+  .whoosh-flash.whoosh-on{
+    animation:none !important;
+  }
+}
+
+
+/* =========================================================
+   DETECTIVE CASE FILES — FULL-SCREEN CINEMATIC CAMERA
+   This overrides only the detective presentation.
+   ========================================================= */
+
+.detective-screen{
+  padding:0 !important;
+  align-items:flex-start;
+  overflow:auto;
+}
+
+.detective-screen .minigame-play-layout{
+  width:100% !important;
+  max-width:none !important;
+}
+
+.detective-screen.detective-cinematic .mini-game-heading,
+.detective-screen.detective-cinematic .detective-intro{
+  display:none;
+}
+
+.detective-screen .minigame-nav{
+  z-index:80;
+}
+
+/*
+  No frame. No rounded box.
+  During the story, the entire visible screen IS the case world.
+*/
+.detective-screen .case-journey{
+  position:relative;
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.detective-screen .case-stage{
+  width:100%;
+  height:100vh;
+  min-height:620px;
+  margin:0;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(132,74,191,.13),transparent 35%),
+    radial-gradient(circle at 18% 72%,rgba(197,84,197,.07),transparent 28%),
+    linear-gradient(145deg,#08040e,#13071f 55%,#090410);
+  transition:
+    height .72s cubic-bezier(.18,.82,.2,1),
+    width .72s cubic-bezier(.18,.82,.2,1),
+    margin .72s cubic-bezier(.18,.82,.2,1);
+}
+
+.detective-screen .case-stage:before{
+  content:"";
+  display:none;
+}
+
+.detective-screen .case-world{
+  transition:
+    transform .82s cubic-bezier(.17,.84,.19,1),
+    filter .32s ease;
+}
+
+/*
+  Brief motion blur during each camera flight.
+*/
+.detective-screen .case-stage.case-travelling .case-world{
+  filter:blur(2.3px);
+}
+
+/*
+  Clue note styling stays paper-like,
+  but because the camera zooms 2x–2.75x,
+  it becomes the main full-screen focus.
+*/
+.detective-screen .case-story-card{
+  min-height:128px;
+  padding:17px 18px;
+  border:0;
+  border-radius:9px;
+  box-shadow:
+    12px 18px 34px rgba(0,0,0,.34);
+}
+
+.detective-screen .case-story-card.case-card-revealed{
+  opacity:.22;
+  transform:scale(.96) rotate(-.5deg);
+}
+
+.detective-screen .case-story-card.case-card-revealed:nth-child(even){
+  transform:scale(.96) rotate(.5deg);
+}
+
+.detective-screen .case-story-card.case-card-current,
+.detective-screen .case-story-card.case-card-current:nth-child(even){
+  opacity:1;
+  transform:scale(1) rotate(0);
+  box-shadow:
+    0 0 34px rgba(193,145,255,.16),
+    14px 22px 42px rgba(0,0,0,.42);
+}
+
+.detective-screen .case-story-card h3{
+  font-size:1.12rem;
+}
+
+.detective-screen .case-story-card p{
+  font-size:.86rem;
+}
+
+/*
+  The transition is visual motion only;
+  no literal WHOOSH word appears.
+*/
+.detective-screen .whoosh-flash span{
+  display:none;
+}
+
+.detective-screen .whoosh-flash{
+  background:
+    linear-gradient(
+      110deg,
+      transparent 8%,
+      rgba(179,124,246,.08) 38%,
+      rgba(255,255,255,.22) 49%,
+      rgba(201,155,255,.11) 56%,
+      transparent 88%
+    );
+}
+
+.detective-screen .whoosh-flash i{
+  height:1px;
+  width:58%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(233,210,255,.8),
+      transparent
+    );
+  box-shadow:
+    0 0 14px rgba(187,128,255,.45);
+}
+
+/*
+  The controls float over the full-screen case,
+  instead of sitting in another bordered panel.
+*/
+.detective-screen .case-step-controls{
+  position:absolute;
+  left:50%;
+  bottom:28px;
+  z-index:25;
+  width:min(720px,90vw);
+  margin:0;
+  transform:translateX(-50%);
+  padding:12px 15px;
+  border:0;
+  border-radius:16px;
+  background:rgba(12,7,18,.64);
+  backdrop-filter:blur(14px);
+  box-shadow:0 14px 38px rgba(0,0,0,.24);
+}
+
+/*
+  After the final clue, the whole case physically shrinks down.
+*/
+.detective-screen .case-journey.case-finished{
+  padding-top:62px;
+}
+
+.detective-screen .case-journey.case-finished .case-stage{
+  width:min(1020px,94vw);
+  height:430px;
+  min-height:0;
+  margin:0 auto;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(132,74,191,.11),transparent 40%),
+    transparent;
+}
+
+.detective-screen .case-journey.case-finished .case-step-controls{
+  display:none;
+}
+
+.detective-screen .case-overview .case-story-card.case-card-revealed,
+.detective-screen .case-overview .case-story-card.case-card-current{
+  opacity:1;
+  transform:scale(1) rotate(0);
+  box-shadow:6px 10px 24px rgba(0,0,0,.28);
+}
+
+/*
+  Questions arrive only after the pull-back.
+*/
+.detective-screen .detective-report{
+  width:min(980px,92vw);
+  margin:28px auto 70px;
+}
+
+@media(max-width:700px){
+  .detective-screen .case-stage{
+    height:100vh;
+    min-height:560px;
+  }
+
+  .detective-screen .case-step-controls{
+    bottom:18px;
+    width:92vw;
+    flex-direction:row;
+    align-items:center;
+  }
+
+  .detective-screen .case-step-controls>div{
+    min-width:0;
+  }
+
+  .detective-screen .case-next-button{
+    width:auto;
+    min-width:130px;
+    flex:0 0 auto;
+  }
+
+  .detective-screen .case-journey.case-finished{
+    padding-top:72px;
+  }
+
+  .detective-screen .case-journey.case-finished .case-stage{
+    width:96vw;
+    height:350px;
+  }
+
+  .detective-screen .detective-report{
+    width:92vw;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .detective-screen .case-world{
+    transition:none !important;
+  }
+}
+
+
+/* =========================================================
+   DETECTIVE CASE FILES — VISIBLE TRAVEL + CLICK ANYWHERE
+   ========================================================= */
+
+/* Slower movement so the player can SEE the travel direction. */
+.detective-screen .case-world{
+  transition:
+    transform 1.24s cubic-bezier(.18,.72,.16,1),
+    filter .24s ease !important;
+}
+
+/* Keep motion crisp instead of blurring the whole journey. */
+.detective-screen .case-stage.case-travelling .case-world{
+  filter:none !important;
+}
+
+/* Remove the old large flash that hid the travel. */
+.detective-screen .whoosh-flash{
+  background:transparent !important;
+  opacity:1;
+  transform:none;
+}
+
+.detective-screen .whoosh-flash.whoosh-on{
+  animation:none !important;
+}
+
+.detective-screen .whoosh-flash span{
+  display:none !important;
+}
+
+/*
+  Directional light streaks.
+  They make the direction obvious without covering the clues.
+*/
+.detective-screen .whoosh-flash i{
+  position:absolute;
+  display:block;
+  width:34%;
+  height:2px;
+  opacity:0;
+  border-radius:999px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(224,190,255,.72),
+      rgba(255,255,255,.9),
+      transparent
+    );
+  box-shadow:
+    0 0 15px rgba(184,117,255,.42);
+}
+
+.detective-screen .case-stage.case-travelling .whoosh-flash i{
+  animation:travelStreakHorizontal 1.05s ease-out both;
+}
+
+.detective-screen .case-stage.travel-left .whoosh-flash i{
+  animation-name:travelStreakLeft;
+}
+
+.detective-screen .case-stage.travel-up .whoosh-flash i,
+.detective-screen .case-stage.travel-down .whoosh-flash i{
+  width:2px;
+  height:34%;
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(224,190,255,.72),
+      rgba(255,255,255,.9),
+      transparent
+    );
+}
+
+.detective-screen .case-stage.travel-up .whoosh-flash i{
+  animation:travelStreakUp 1.05s ease-out both;
+}
+
+.detective-screen .case-stage.travel-down .whoosh-flash i{
+  animation:travelStreakDown 1.05s ease-out both;
+}
+
+.detective-screen .case-stage.travel-diagonal .whoosh-flash i{
+  animation:travelStreakDiagonal 1.05s ease-out both;
+}
+
+.detective-screen .whoosh-flash i:nth-of-type(1){
+  top:27%;
+  left:8%;
+  animation-delay:.02s !important;
+}
+
+.detective-screen .whoosh-flash i:nth-of-type(2){
+  top:50%;
+  left:34%;
+  animation-delay:.10s !important;
+}
+
+.detective-screen .whoosh-flash i:nth-of-type(3){
+  top:70%;
+  left:16%;
+  animation-delay:.18s !important;
+}
+
+@keyframes travelStreakHorizontal{
+  0%{opacity:0;transform:translateX(-80px)}
+  22%{opacity:.7}
+  75%{opacity:.35}
+  100%{opacity:0;transform:translateX(230px)}
+}
+
+@keyframes travelStreakLeft{
+  0%{opacity:0;transform:translateX(230px)}
+  22%{opacity:.7}
+  75%{opacity:.35}
+  100%{opacity:0;transform:translateX(-160px)}
+}
+
+@keyframes travelStreakUp{
+  0%{opacity:0;transform:translateY(190px)}
+  22%{opacity:.7}
+  75%{opacity:.35}
+  100%{opacity:0;transform:translateY(-170px)}
+}
+
+@keyframes travelStreakDown{
+  0%{opacity:0;transform:translateY(-160px)}
+  22%{opacity:.7}
+  75%{opacity:.35}
+  100%{opacity:0;transform:translateY(210px)}
+}
+
+@keyframes travelStreakDiagonal{
+  0%{
+    opacity:0;
+    transform:translate(-90px,-70px) rotate(-12deg)
+  }
+  20%{opacity:.7}
+  78%{opacity:.32}
+  100%{
+    opacity:0;
+    transform:translate(230px,150px) rotate(-12deg)
+  }
+}
+
+/* ---------------------------------------------------------
+   Nicer detective clue cards
+   --------------------------------------------------------- */
+
+.detective-screen .case-story-card{
+  position:absolute;
+  min-height:138px;
+  padding:21px 22px 19px;
+  border:none !important;
+  border-radius:15px !important;
+
+  color:#251a29;
+
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255,255,255,.72),
+      rgba(255,255,255,.08)
+    ),
+    linear-gradient(
+      145deg,
+      #efe5cf,
+      #d9c6aa
+    );
+
+  box-shadow:
+    0 24px 52px rgba(0,0,0,.34),
+    inset 0 1px rgba(255,255,255,.78);
+
+  overflow:visible;
+}
+
+/* little colored file-tab */
+.detective-screen .case-story-card::before{
+  content:"EVIDENCE";
+  position:absolute;
+  left:18px;
+  top:-15px;
+
+  padding:6px 12px;
+
+  border-radius:8px 8px 2px 2px;
+
+  color:#fff7ff;
+  background:
+    linear-gradient(
+      135deg,
+      #7a4fa0,
+      #a36bc3
+    );
+
+  box-shadow:
+    0 7px 13px rgba(40,20,52,.22);
+
+  font:
+    800 .56rem
+    Consolas,
+    monospace;
+
+  letter-spacing:.15em;
+}
+
+/* paperclip / pin */
+.detective-screen .case-story-card::after{
+  content:"";
+  position:absolute;
+  right:19px;
+  top:-10px;
+
+  width:17px;
+  height:36px;
+
+  border:
+    2px solid
+    rgba(93,68,95,.64);
+
+  border-bottom:
+    0;
+
+  border-radius:
+    12px 12px 0 0;
+
+  transform:
+    rotate(8deg);
+}
+
+.detective-screen .case-story-card:nth-child(even){
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255,255,255,.65),
+      rgba(255,255,255,.06)
+    ),
+    linear-gradient(
+      145deg,
+      #e5d9c7,
+      #cfbba5
+    );
+}
+
+.detective-screen .case-story-card span{
+  margin-top:7px;
+
+  color:#8a6c8e;
+
+  font:
+    900 .62rem
+    Consolas,
+    monospace;
+
+  letter-spacing:.16em;
+}
+
+.detective-screen .case-story-card h3{
+  margin:
+    11px 0
+    8px;
+
+  color:#342139;
+
+  font:
+    700 1.16rem
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+.detective-screen .case-story-card p{
+  margin:0;
+
+  color:#55465a;
+
+  font-size:.88rem;
+  line-height:1.55;
+}
+
+/* Current clue gets a subtle detective spotlight. */
+.detective-screen .case-story-card.case-card-current{
+  box-shadow:
+    0 0 0 3px rgba(203,159,255,.17),
+    0 0 48px rgba(176,111,238,.17),
+    0 28px 62px rgba(0,0,0,.39) !important;
+}
+
+/* ---------------------------------------------------------
+   Click-anywhere interaction
+   --------------------------------------------------------- */
+
+.detective-screen .case-stage{
+  cursor:pointer;
+}
+
+.detective-screen .case-step-controls{
+  pointer-events:none;
+  justify-content:space-between;
+}
+
+.detective-screen .case-progress-text{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.detective-screen .case-click-hint{
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  color:#eee3f7;
+
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.detective-screen .case-click-dot{
+  width:9px;
+  height:9px;
+
+  border-radius:50%;
+
+  background:#d8b9ff;
+
+  box-shadow:
+    0 0 0 0 rgba(216,185,255,.35);
+
+  animation:caseClickPulse 1.65s ease-out infinite;
+}
+
+@keyframes caseClickPulse{
+  0%{
+    box-shadow:
+      0 0 0 0 rgba(216,185,255,.35);
+  }
+  70%{
+    box-shadow:
+      0 0 0 10px rgba(216,185,255,0);
+  }
+  100%{
+    box-shadow:
+      0 0 0 0 rgba(216,185,255,0);
+  }
+}
+
+.detective-screen .case-hidden-next{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+
+/* overview still pulls back and shows all evidence */
+.detective-screen .case-overview{
+  cursor:default;
+}
+
+@media(max-width:700px){
+  .detective-screen .case-story-card{
+    padding:18px 18px 16px;
+  }
+
+  .detective-screen .case-step-controls{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:7px;
+  }
+
+  .detective-screen .case-click-hint{
+    font-size:.76rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .detective-screen .case-world{
+    transition:none !important;
+  }
+
+  .detective-screen .case-stage.case-travelling .whoosh-flash i{
+    animation:none !important;
+  }
+}
+
+
+/* =========================================================
+   DETECTIVE — TRUE POWERPOINT-STYLE SCENE SLIDES
+   ========================================================= */
+
+.detective-screen.detective-slideshow-mode .case-stage{
+  position:relative;
+  width:100%;
+  height:100vh;
+  min-height:620px;
+  overflow:hidden;
+
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+
+  cursor:pointer;
+
+  background:
+    radial-gradient(circle at 50% 44%,rgba(120,68,184,.14),transparent 34%),
+    radial-gradient(circle at 15% 82%,rgba(218,90,206,.06),transparent 28%),
+    linear-gradient(145deg,#07030c,#12071e 55%,#08030f);
+}
+
+.detective-screen .case-scene-layer{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  overflow:hidden;
+  opacity:1;
+  transition:opacity .42s ease,transform .5s ease;
+}
+
+.detective-screen .case-scene-layer.scene-layer-hidden{
+  opacity:0;
+  transform:scale(.7);
+  pointer-events:none;
+}
+
+.detective-screen .case-world.case-world-hidden{
+  opacity:0 !important;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* One clue = one full PowerPoint-like scene */
+.detective-slide{
+  position:absolute;
+  inset:0;
+
+  display:grid;
+  place-items:center;
+
+  padding:85px 32px 110px;
+
+  opacity:1;
+  transform:translate(0,0);
+
+  will-change:transform,opacity;
+
+  transition:
+    transform .92s cubic-bezier(.22,.76,.18,1),
+    opacity .42s ease;
+}
+
+.detective-slide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 25%,rgba(183,126,236,.12),transparent 25%),
+    radial-gradient(circle at 78% 70%,rgba(224,127,212,.07),transparent 26%);
+  pointer-events:none;
+}
+
+.detective-slide-deco{
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(203,168,239,.07);
+  transform:rotate(34deg);
+  pointer-events:none;
+}
+
+.detective-slide-deco.deco-a{
+  left:-95px;
+  top:7%;
+}
+
+.detective-slide-deco.deco-b{
+  right:-100px;
+  bottom:8%;
+}
+
+/* Nicely designed case square/card */
+.detective-slide-paper{
+  position:relative;
+
+  width:min(690px,82vw);
+  min-height:320px;
+
+  padding:58px 58px 48px;
+
+  border-radius:8px 8px 15px 15px;
+
+  color:#2d2030;
+
+  background:
+    linear-gradient(155deg,rgba(255,255,255,.75),rgba(255,255,255,.08)),
+    linear-gradient(140deg,#eee4d2,#d9c6aa);
+
+  box-shadow:
+    0 34px 90px rgba(0,0,0,.45),
+    0 0 0 1px rgba(87,56,91,.12),
+    inset 0 1px rgba(255,255,255,.85);
+
+  transform:rotate(-.55deg);
+}
+
+.detective-slide-paper::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  opacity:.13;
+  background-image:
+    radial-gradient(circle,#6a5a58 0 .7px,transparent .9px);
+  background-size:18px 18px;
+  pointer-events:none;
+}
+
+.detective-file-top{
+  position:absolute;
+  left:28px;
+  top:-29px;
+
+  min-width:175px;
+  height:44px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+
+  padding:0 18px;
+
+  border-radius:10px 10px 3px 3px;
+
+  color:#fff9ff;
+
+  background:
+    linear-gradient(135deg,#654180,#9461ab);
+
+  box-shadow:
+    0 10px 23px rgba(21,11,28,.25);
+
+  font:900 .65rem Consolas,monospace;
+  letter-spacing:.16em;
+}
+
+.detective-file-top b{
+  font-size:.8rem;
+}
+
+.detective-pin{
+  position:absolute;
+  right:43px;
+  top:-20px;
+
+  width:22px;
+  height:52px;
+
+  border:3px solid #756b78;
+  border-bottom:0;
+
+  border-radius:15px 15px 0 0;
+
+  transform:rotate(7deg);
+}
+
+.detective-slide-kicker{
+  margin:0 0 14px;
+
+  color:#806884;
+
+  font:900 .69rem Consolas,monospace;
+  letter-spacing:.18em;
+}
+
+.detective-slide-paper h3{
+  position:relative;
+  z-index:2;
+
+  max-width:560px;
+
+  margin:0;
+
+  color:#35243a;
+
+  font:
+    700
+    clamp(2rem,4.5vw,3.5rem)
+    Georgia,"Times New Roman",serif;
+
+  line-height:1.02;
+}
+
+.detective-divider{
+  width:76px;
+  height:3px;
+
+  margin:24px 0;
+
+  border-radius:999px;
+
+  background:#9169a3;
+}
+
+.detective-slide-copy{
+  position:relative;
+  z-index:2;
+
+  max-width:560px;
+
+  margin:0;
+
+  color:#514554;
+
+  font-size:clamp(1rem,2vw,1.14rem);
+  line-height:1.72;
+}
+
+.detective-stamp{
+  position:absolute;
+  right:38px;
+  bottom:32px;
+
+  padding:7px 11px;
+
+  border:2px solid rgba(130,74,125,.36);
+
+  color:rgba(130,74,125,.40);
+
+  transform:rotate(-9deg);
+
+  font:900 .65rem Consolas,monospace;
+  letter-spacing:.15em;
+}
+
+/* =========================================================
+   POWERPOINT SLIDE DIRECTIONS
+   Next scene enters from one edge.
+   Current scene exits through the opposite edge.
+   ========================================================= */
+
+.slide-start-right{transform:translateX(105%)}
+.slide-start-left{transform:translateX(-105%)}
+.slide-start-up{transform:translateY(-105%)}
+.slide-start-down{transform:translateY(105%)}
+
+.slide-start-up-right{transform:translate(105%,-105%)}
+.slide-start-up-left{transform:translate(-105%,-105%)}
+.slide-start-down-right{transform:translate(105%,105%)}
+.slide-start-down-left{transform:translate(-105%,105%)}
+
+.slide-exit-right{
+  transform:translateX(-105%) !important;
+  opacity:.8;
+}
+
+.slide-exit-left{
+  transform:translateX(105%) !important;
+  opacity:.8;
+}
+
+.slide-exit-up{
+  transform:translateY(105%) !important;
+  opacity:.8;
+}
+
+.slide-exit-down{
+  transform:translateY(-105%) !important;
+  opacity:.8;
+}
+
+.slide-exit-up-right{
+  transform:translate(-105%,105%) !important;
+  opacity:.78;
+}
+
+.slide-exit-up-left{
+  transform:translate(105%,105%) !important;
+  opacity:.78;
+}
+
+.slide-exit-down-right{
+  transform:translate(-105%,-105%) !important;
+  opacity:.78;
+}
+
+.slide-exit-down-left{
+  transform:translate(105%,-105%) !important;
+  opacity:.78;
+}
+
+/* Final scene collapses before the full map appears */
+.detective-slide-collapse{
+  transform:scale(.16) !important;
+  opacity:0 !important;
+
+  transition:
+    transform .54s cubic-bezier(.2,.8,.18,1),
+    opacity .4s ease !important;
+}
+
+/* Very subtle streaks — never hide the actual slide movement */
+.detective-screen .whoosh-flash{
+  z-index:30;
+  pointer-events:none;
+  background:transparent !important;
+  opacity:1 !important;
+  transform:none !important;
+}
+
+.detective-screen .whoosh-flash i{
+  position:absolute;
+
+  width:34%;
+  height:1px;
+
+  opacity:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(235,213,255,.52),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px rgba(181,116,237,.22);
+}
+
+.detective-screen .ppt-transitioning .whoosh-flash i{
+  animation:pptLightStreak .72s ease-out both;
+}
+
+.detective-screen .whoosh-flash i:nth-of-type(1){
+  left:8%;
+  top:27%;
+}
+
+.detective-screen .whoosh-flash i:nth-of-type(2){
+  left:38%;
+  top:51%;
+  animation-delay:.08s !important;
+}
+
+.detective-screen .whoosh-flash i:nth-of-type(3){
+  left:18%;
+  top:72%;
+  animation-delay:.15s !important;
+}
+
+@keyframes pptLightStreak{
+  0%{
+    opacity:0;
+    transform:translateX(-65px);
+  }
+
+  30%{
+    opacity:.45;
+  }
+
+  100%{
+    opacity:0;
+    transform:translateX(180px);
+  }
+}
+
+/* Click anywhere prompt floats over the scene */
+.detective-screen .case-step-controls{
+  position:absolute;
+  left:50%;
+  bottom:24px;
+  z-index:50;
+
+  width:min(720px,90vw);
+
+  transform:translateX(-50%);
+
+  margin:0;
+  padding:11px 15px;
+
+  border:0;
+
+  border-radius:16px;
+
+  background:rgba(10,5,16,.57);
+
+  backdrop-filter:blur(14px);
+
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.19);
+
+  pointer-events:none;
+}
+
+.detective-screen .case-hidden-next{
+  display:none !important;
+}
+
+/* Final overview */
+.detective-screen .case-world{
+  position:absolute;
+  left:0;
+  top:0;
+
+  width:1260px;
+  height:760px;
+
+  z-index:5;
+
+  transform-origin:0 0;
+}
+
+.detective-screen .case-journey.case-finished{
+  padding-top:62px;
+}
+
+.detective-screen .case-journey.case-finished .case-stage{
+  width:min(1040px,94vw);
+  height:455px;
+  min-height:0;
+
+  margin:0 auto;
+
+  cursor:default;
+
+  background:
+    radial-gradient(circle at 50% 50%,rgba(120,68,184,.10),transparent 38%),
+    #0b0611;
+}
+
+.detective-screen .case-map-card{
+  opacity:1 !important;
+  transform:scale(1) rotate(0) !important;
+}
+
+.detective-screen .case-journey.case-finished .case-step-controls{
+  display:none;
+}
+
+@media(max-width:700px){
+
+  .detective-screen.detective-slideshow-mode .case-stage{
+    min-height:560px;
+    height:100vh;
+  }
+
+  .detective-slide{
+    padding:75px 18px 115px;
+  }
+
+  .detective-slide-paper{
+    width:min(88vw,600px);
+    min-height:300px;
+
+    padding:
+      48px
+      28px
+      38px;
+  }
+
+  .detective-file-top{
+    left:20px;
+  }
+
+  .detective-pin{
+    right:30px;
+  }
+
+  .detective-stamp{
+    right:22px;
+    bottom:20px;
+  }
+
+  .detective-screen .case-step-controls{
+    width:92vw;
+    align-items:flex-start;
+    gap:5px;
+    flex-direction:column;
+  }
+
+  .detective-screen .case-journey.case-finished .case-stage{
+    width:96vw;
+    height:360px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .detective-slide{
+    transition:none !important;
+  }
+
+  .detective-slide-collapse{
+    transition:none !important;
+  }
+}
+
+
+/* =========================================================
+   DETECTIVE CASE FILES — TRUE MOVING DETECTIVE BOARD
+   The board itself physically travels between pinned clues.
+   ========================================================= */
+
+.detective-screen.detective-board-mode{
+  padding:0 !important;
+  overflow:auto;
+}
+
+.detective-screen.detective-board-mode .mini-game-heading,
+.detective-screen.detective-board-mode .detective-intro{
+  display:none;
+}
+
+.detective-screen.detective-board-mode .case-journey{
+  position:relative;
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.detective-screen.detective-board-mode .detective-board-stage{
+  position:relative;
+
+  width:100%;
+  height:100vh;
+  min-height:620px;
+
+  margin:0;
+
+  overflow:hidden;
+
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+
+  cursor:pointer;
+
+  background:
+    radial-gradient(circle at 50% 50%,rgba(70,38,80,.26),transparent 62%),
+    #160f17;
+}
+
+/* =========================================================
+   GIANT CORK / DETECTIVE BOARD
+   ========================================================= */
+
+.detective-screen .detective-board-world{
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:2600px !important;
+  height:1700px !important;
+
+  transform-origin:0 0;
+
+  overflow:hidden;
+
+  opacity:1 !important;
+  visibility:visible !important;
+
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.035),transparent 24%),
+    radial-gradient(circle at 70% 65%,rgba(0,0,0,.10),transparent 30%),
+    linear-gradient(145deg,#5b3544,#3f2935 48%,#4b303d);
+
+  box-shadow:
+    inset 0 0 180px rgba(0,0,0,.38);
+
+  transition:
+    transform 1.38s cubic-bezier(.18,.72,.16,1),
+    opacity .35s ease;
+
+  will-change:transform;
+}
+
+.detective-screen .detective-board-world.board-instant{
+  transition:none !important;
+}
+
+/* Cork / fabric grain */
+.detective-screen .board-grain{
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  opacity:.48;
+
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.055) 0 1px,transparent 1.4px),
+    radial-gradient(circle,rgba(0,0,0,.07) 0 .8px,transparent 1.3px),
+    linear-gradient(35deg,rgba(255,255,255,.018) 25%,transparent 25% 75%,rgba(0,0,0,.02) 75%);
+
+  background-size:
+    21px 21px,
+    29px 29px,
+    35px 35px;
+
+  background-position:
+    0 0,
+    12px 7px,
+    0 0;
+}
+
+/* =========================================================
+   RED DETECTIVE STRINGS
+   ========================================================= */
+
+.detective-screen .case-path-lines{
+  position:absolute;
+
+  inset:0;
+
+  width:2600px !important;
+  height:1700px !important;
+
+  z-index:2;
+
+  overflow:visible;
+
+  pointer-events:none;
+}
+
+.detective-screen .case-path-line{
+  stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+}
+
+.detective-screen .board-string-network{
+  stroke:#7f3d50;
+  stroke-width:2.2;
+  opacity:.2;
+}
+
+.detective-screen .board-string-story{
+  stroke:#d25c6c;
+  stroke-width:4;
+  opacity:.96;
+
+  filter:
+    drop-shadow(0 0 3px rgba(230,91,112,.34));
+
+  stroke-dasharray:1000;
+  stroke-dashoffset:1000;
+}
+
+.detective-screen .board-string-story.board-string-drawing{
+  animation:
+    detectiveStringDraw
+    1.2s
+    cubic-bezier(.2,.72,.2,1)
+    forwards;
+}
+
+@keyframes detectiveStringDraw{
+  to{
+    stroke-dashoffset:0;
+  }
+}
+
+/* =========================================================
+   PINNED EVIDENCE CARDS
+   ========================================================= */
+
+.detective-screen .detective-board-card{
+  position:absolute;
+
+  z-index:5;
+
+  min-height:250px;
+
+  padding:
+    62px
+    34px
+    32px;
+
+  border:0 !important;
+
+  border-radius:
+    8px 8px 14px 14px !important;
+
+  color:#2d2030;
+
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255,255,255,.74),
+      rgba(255,255,255,.06)
+    ),
+    linear-gradient(
+      145deg,
+      #eee3ce,
+      #d5bfa3
+    );
+
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.38),
+    inset 0 1px rgba(255,255,255,.82);
+
+  transform:
+    rotate(-1.1deg)
+    scale(.94);
+
+  transform-origin:
+    center top;
+
+  opacity:.30;
+
+  filter:
+    saturate(.65)
+    brightness(.78);
+
+  transition:
+    opacity .38s ease,
+    transform .5s ease,
+    filter .4s ease,
+    box-shadow .4s ease;
+}
+
+.detective-screen .detective-board-card:nth-child(even){
+  transform:
+    rotate(1.2deg)
+    scale(.94);
+}
+
+.detective-screen .detective-board-card.board-card-seen{
+  opacity:.68;
+
+  filter:
+    saturate(.88)
+    brightness(.9);
+}
+
+.detective-screen .detective-board-card.board-card-current,
+.detective-screen .detective-board-card.board-card-current:nth-child(even){
+  z-index:10;
+
+  opacity:1;
+
+  filter:none;
+
+  transform:
+    rotate(0)
+    scale(1.08);
+
+  box-shadow:
+    0 0 0 3px rgba(222,170,255,.12),
+    0 0 65px rgba(182,113,224,.17),
+    0 30px 74px rgba(0,0,0,.44);
+}
+
+.detective-screen .detective-board-card.board-card-future{
+  opacity:.18;
+
+  filter:
+    blur(.7px)
+    saturate(.55)
+    brightness(.66);
+}
+
+/* Real pushpin */
+.detective-screen .board-card-pin{
+  position:absolute;
+
+  left:50%;
+  top:-25px;
+
+  z-index:12;
+
+  width:30px;
+  height:30px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(circle at 35% 30%,#ffc2cd 0 12%,#c9445a 34%,#762337 72%);
+
+  box-shadow:
+    0 7px 10px rgba(0,0,0,.34),
+    inset 0 2px 3px rgba(255,255,255,.44);
+}
+
+.detective-screen .board-card-pin::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  top:24px;
+
+  width:3px;
+  height:24px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    linear-gradient(#8e848a,#40363f);
+
+  box-shadow:
+    1px 0 rgba(255,255,255,.18);
+}
+
+.detective-screen .board-card-pin i{
+  position:absolute;
+
+  left:7px;
+  top:5px;
+
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.55);
+}
+
+/* File tab */
+.detective-screen .board-card-tab{
+  position:absolute;
+
+  left:24px;
+  top:-1px;
+
+  min-width:150px;
+  height:38px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+
+  padding:0 14px;
+
+  border-radius:
+    0 0 8px 8px;
+
+  color:#fff7ff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #654180,
+      #9964ad
+    );
+
+  font:
+    900 .62rem
+    Consolas,
+    monospace;
+
+  letter-spacing:.14em;
+}
+
+.detective-screen .board-card-kicker{
+  margin:0 0 12px;
+
+  color:#8b6c8d;
+
+  font:
+    900 .68rem
+    Consolas,
+    monospace;
+
+  letter-spacing:.16em;
+}
+
+.detective-screen .detective-board-card h3{
+  margin:0;
+
+  color:#352439;
+
+  font:
+    700
+    2rem
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  line-height:1.04;
+}
+
+.detective-screen .board-card-rule{
+  width:68px;
+  height:3px;
+
+  margin:20px 0;
+
+  border-radius:999px;
+
+  background:#9368a0;
+}
+
+.detective-screen .detective-board-card>p:last-of-type{
+  margin:0;
+
+  color:#55475a;
+
+  font-size:1rem;
+  line-height:1.65;
+
+  overflow-wrap:anywhere;
+}
+
+.detective-screen .board-card-stamp{
+  position:absolute;
+
+  right:26px;
+  bottom:24px;
+
+  padding:6px 9px;
+
+  border:
+    2px solid
+    rgba(128,72,124,.27);
+
+  color:
+    rgba(128,72,124,.32);
+
+  transform:
+    rotate(-8deg);
+
+  font:
+    900 .62rem
+    Consolas,
+    monospace;
+
+  letter-spacing:.14em;
+}
+
+/* =========================================================
+   FIXED FOCUS PIN / TARGET
+   This makes the "pin-to-pin" detective movement obvious.
+   ========================================================= */
+
+.detective-screen .board-focus-pin{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  z-index:35;
+
+  width:72px;
+  height:72px;
+
+  transform:
+    translate(-50%,-50%);
+
+  pointer-events:none;
+
+  opacity:.34;
+
+  border:
+    1px solid
+    rgba(232,195,255,.17);
+
+  border-radius:50%;
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.detective-screen .board-focus-pin::before,
+.detective-screen .board-focus-pin::after{
+  content:"";
+
+  position:absolute;
+
+  background:
+    rgba(232,195,255,.24);
+}
+
+.detective-screen .board-focus-pin::before{
+  left:50%;
+  top:-16px;
+
+  width:1px;
+  height:104px;
+}
+
+.detective-screen .board-focus-pin::after{
+  top:50%;
+  left:-16px;
+
+  width:104px;
+  height:1px;
+}
+
+.detective-screen .board-focus-pin span{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:8px;
+  height:8px;
+
+  transform:
+    translate(-50%,-50%);
+
+  border-radius:50%;
+
+  background:#debaff;
+
+  box-shadow:
+    0 0 18px rgba(222,186,255,.48);
+}
+
+.detective-screen .detective-board-stage.detective-board-moving .board-focus-pin{
+  opacity:.7;
+
+  transform:
+    translate(-50%,-50%)
+    scale(1.14);
+}
+
+/* =========================================================
+   VISIBLE BOARD TRAVEL
+   ========================================================= */
+
+.detective-screen .detective-board-stage.detective-board-moving::before{
+  content:
+    "FOLLOWING THE STRING";
+
+  position:absolute;
+
+  left:50%;
+  top:28px;
+
+  z-index:45;
+
+  transform:
+    translateX(-50%);
+
+  padding:
+    8px
+    13px;
+
+  border-radius:999px;
+
+  color:#decce8;
+
+  background:
+    rgba(12,6,16,.55);
+
+  backdrop-filter:
+    blur(8px);
+
+  font:
+    800 .62rem
+    Consolas,
+    monospace;
+
+  letter-spacing:.16em;
+
+  animation:
+    boardTravelLabel
+    1.3s
+    ease
+    both;
+}
+
+@keyframes boardTravelLabel{
+  0%,100%{
+    opacity:0;
+    transform:
+      translateX(-50%)
+      translateY(-8px);
+  }
+
+  18%,78%{
+    opacity:1;
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+}
+
+/* =========================================================
+   CLICK ANYWHERE HINT
+   ========================================================= */
+
+.detective-screen.detective-board-mode .case-step-controls{
+  position:absolute;
+
+  left:50%;
+  bottom:24px;
+
+  z-index:50;
+
+  width:
+    min(
+      720px,
+      90vw
+    );
+
+  transform:
+    translateX(-50%);
+
+  margin:0;
+
+  padding:
+    11px
+    15px;
+
+  border:0;
+
+  border-radius:16px;
+
+  background:
+    rgba(10,5,16,.57);
+
+  backdrop-filter:
+    blur(14px);
+
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.19);
+
+  pointer-events:none;
+}
+
+.detective-screen.detective-board-mode .case-hidden-next{
+  display:none !important;
+}
+
+/* =========================================================
+   FINAL ZOOM OUT
+   ========================================================= */
+
+.detective-screen .detective-board-stage.detective-board-pulling-back .board-focus-pin{
+  opacity:0;
+}
+
+.detective-screen.detective-board-mode .case-journey.case-finished{
+  padding-top:68px;
+}
+
+.detective-screen.detective-board-mode .case-journey.case-finished .case-stage{
+  width:
+    min(
+      1060px,
+      94vw
+    );
+
+  height:
+    480px;
+
+  min-height:0;
+
+  margin:
+    0 auto;
+
+  border-radius:
+    18px !important;
+
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.22) !important;
+
+  cursor:default;
+
+  transition:
+    width .6s ease,
+    height .6s ease,
+    border-radius .6s ease;
+}
+
+.detective-screen .detective-board-card.board-card-overview{
+  opacity:1;
+
+  filter:none;
+
+  transform:
+    rotate(0)
+    scale(1);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:700px){
+
+  .detective-screen.detective-board-mode .detective-board-stage{
+    height:100vh;
+    min-height:560px;
+  }
+
+  .detective-screen .detective-board-card{
+    min-height:230px;
+    padding:
+      58px
+      27px
+      28px;
+  }
+
+  .detective-screen .detective-board-card h3{
+    font-size:1.75rem;
+  }
+
+  .detective-screen.detective-board-mode .case-step-controls{
+    width:92vw;
+
+    flex-direction:column;
+    align-items:flex-start;
+
+    gap:6px;
+  }
+
+  .detective-screen.detective-board-mode .case-journey.case-finished .case-stage{
+    width:96vw;
+    height:360px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .detective-screen .detective-board-world{
+    transition:none !important;
+  }
+
+  .detective-screen .board-string-story.board-string-drawing{
+    animation:none !important;
+    stroke-dashoffset:0;
+  }
+}
+
+
+/* =========================================================
+   DETECTIVE FINAL OVERVIEW — CENTERED + READABLE
+   ========================================================= */
+
+.detective-screen.detective-board-mode
+.case-journey.case-finished
+.case-stage{
+  width:min(1180px,96vw) !important;
+  height:610px !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+  display:block;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(116,66,150,.12),
+      transparent 44%
+    ),
+    #0b0611;
+}
+
+/*
+  When the entire case is shown, make the cards a little cleaner
+  and the words more readable after the board scales down.
+*/
+.detective-screen
+.detective-board-card.board-card-overview{
+  opacity:1 !important;
+  filter:none !important;
+
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.8) !important;
+}
+
+.detective-screen
+.detective-board-card.board-card-overview
+h3{
+  font-size:2.15rem !important;
+  line-height:1.02 !important;
+}
+
+.detective-screen
+.detective-board-card.board-card-overview
+>p:last-of-type{
+  font-size:1.08rem !important;
+  line-height:1.55 !important;
+}
+
+.detective-screen
+.detective-board-card.board-card-overview
+.board-card-kicker{
+  font-size:.72rem !important;
+}
+
+.detective-screen
+.detective-board-card.board-card-overview
+.board-card-tab{
+  min-width:158px;
+  height:40px;
+
+  font-size:.65rem;
+}
+
+/*
+  Keep the final case visually centered even if the report below
+  is wider or narrower.
+*/
+.detective-screen.detective-board-mode
+.detective-report{
+  width:min(1000px,92vw);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Mobile: still fit the entire cluster, but give it more room. */
+@media(max-width:700px){
+
+  .detective-screen.detective-board-mode
+  .case-journey.case-finished
+  .case-stage{
+    width:97vw !important;
+    height:470px !important;
+  }
+
+  .detective-screen
+  .detective-board-card.board-card-overview
+  h3{
+    font-size:2rem !important;
+  }
+
+  .detective-screen
+  .detective-board-card.board-card-overview
+  >p:last-of-type{
+    font-size:1.02rem !important;
+  }
+}
+
+
+/* FINAL DETECTIVE OVERVIEW — TRUE HORIZONTAL CENTER */
+.detective-screen.detective-board-mode
+.case-journey.case-finished{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.detective-screen.detective-board-mode
+.case-journey.case-finished
+.case-stage{
+  position:relative;
+  left:auto !important;
+  right:auto !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  align-self:center;
+}
