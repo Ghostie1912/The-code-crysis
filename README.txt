@@ -23,3 +23,4 @@ NEW NAVIGATION
 - Back to Intro button: returns to the opening screen and resets the tutorial.
 - Guide notes now have Previous Note / Next Note controls.
 - Left and right arrow keys also move through guide notes.
+.
