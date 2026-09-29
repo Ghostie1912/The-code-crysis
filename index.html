@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Coding Crysis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main id="app">
+  <section id="splashScreen" class="screen active splash-screen custom-cover-screen" aria-label="Opening screen">
+    <div class="tutorial-nav intro-only-nav">
+      <span></span>
+      <button class="tutorial-control skip-tutorial" type="button">Skip tutorial →</button>
+    </div>
+    <div class="cover-bg-blur" aria-hidden="true"></div>
+    <div class="custom-cover-wrap">
+      <img class="custom-cover-image" src="assets/the-coding-crysis-cover.gif" alt="The Coding Crysis cover art">
+    </div>
+    <div class="custom-cover-bottom">
+      <p class="tap-hint custom-cover-hint">Press anywhere to go forward</p>
+    </div>
+  </section>
+
+  <section id="codeScreen" class="screen code-screen">
+    <div class="tutorial-nav">
+      <button class="tutorial-control back-intro" type="button">← Back to intro</button>
+      <button class="tutorial-control skip-tutorial" type="button">Skip tutorial →</button>
+    </div>
+    <div class="editor">
+      <div class="editor-top"><div class="lights"><i></i><i></i><i></i></div><span>visitor_check.js</span><small>● secure mode</small></div>
+      <div class="editor-body">
+        <div class="numbers">1<br>2<br>3<br>4<br>5<br>6</div>
+        <div class="code-area">
+          <div class="code-row"><span class="prompt">&gt;</span><span id="questionText"></span><span id="cursor" class="cursor"></span></div>
+          <div class="code-row green"><span class="prompt">&gt;</span><span id="answerText"></span></div>
+          <div class="code-row lilac"><span class="prompt">&gt;</span><span id="processText"></span></div>
+        </div>
+      </div>
+      <div id="yesWrap" class="yes-wrap hidden"><button id="yesButton" type="button">Yes</button></div>
+    </div>
+  </section>
+
+  <section id="guideIntroScreen" class="screen guide-intro-screen">
+    <div class="tutorial-nav">
+      <button class="tutorial-control back-intro" type="button">← Back to intro</button>
+      <button class="tutorial-control skip-tutorial" type="button">Skip tutorial →</button>
+    </div>
+    <div class="guide-intro-content"><span class="spark s1">✦</span><span class="spark s2">✧</span><p class="eyebrow">TRAINING FILE 01</p><h2>How to avoid<br><em>phishing &amp; scamming</em></h2><p class="tap-hint">Click anywhere to begin</p></div>
+  </section>
+
+  <section id="guideScreen" class="screen guide-screen">
+    <div class="tutorial-nav">
+      <button class="tutorial-control back-intro" type="button">← Back to intro</button>
+      <button class="tutorial-control skip-tutorial" type="button">Skip tutorial →</button>
+    </div>
+    <div class="guide-layout">
+      <header class="guide-head"><div><p class="eyebrow">SECURITY GUIDE</p><h2>Learn the warning signs</h2></div><div class="progress-wrap"><span id="guideCounter">01 / 11</span><div class="progress"><i id="guideProgress"></i></div></div></header>
+      <div id="guideDeck" class="deck" tabindex="0" role="button" aria-label="Next guide card">
+        <div class="paper back2"></div><div class="paper back1"></div>
+        <article id="guideCard" class="paper guide-card"><span id="guideNumber" class="guide-number">01</span><h3 id="guideTitle"></h3><p id="guideBody"></p><footer><span>click card to continue</span><b>↗</b></footer></article>
+      </div>
+
+      <div class="guide-page-nav" aria-label="Guide page controls">
+        <button id="guidePrevButton" class="guide-nav-button" type="button">← Previous note</button>
+        <button id="guideNextButton" class="guide-nav-button guide-nav-primary" type="button">Next note →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="categoryScreen" class="screen category-screen">
+    <div class="category-back-wrap">
+      <button class="tutorial-control back-intro" type="button">← Back to intro</button>
+    </div>
+    <div class="category-content"><p class="eyebrow">NOW IT'S YOUR TURN</p><h2>Choose a challenge</h2><p class="subtitle">Every round is randomized. Think before you click.</p>
+      <div class="category-grid">
+        <button class="category-card" data-category="messages"><strong>💬</strong><span>Messages</span><small>branching conversations</small></button>
+        <button class="category-card" data-category="emails"><strong>✉</strong><span>Emails</span><small>spot the phishing signs</small></button>
+        <button class="category-card" data-category="applications"><strong>▦</strong><span>Applications</span><small>permissions &amp; downloads</small></button>
+        <button class="category-card" data-category="websites"><strong>◎</strong><span>Websites</span><small>links, pop-ups &amp; fake pages</small></button>
+      </div>
+      <div class="section-switch-row">
+        <span class="section-switch-label">Finished the challenges?</span>
+        <button id="goToMinigames" class="section-arrow" type="button">Minigames <span>→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="screen game-screen">
+    <div class="game-layout"><header class="game-head"><button id="backToCategories" class="ghost" type="button">← categories</button><div><b id="gameCategory">Messages</b><small id="roundLabel">random scenario</small></div></header><div id="scenarioHost"></div></div>
+  </section>
+
+  <section id="resultScreen" class="screen result-screen">
+    <div id="celebration" class="celebration" aria-hidden="true"><i>✦</i><i>✧</i><i>★</i><i>✦</i><i>✧</i><i>★</i><i>✦</i><i>✧</i></div>
+    <div id="resultPanel" class="result-panel">
+      <div id="resultIcon" class="result-icon">🛡️</div><p id="resultTag" class="eyebrow">RESULT</p><h2 id="resultTitle"></h2><p id="resultMessage" class="result-message"></p><p id="resultExplanation" class="result-explanation"></p>
+      <div class="result-actions"><button id="retryButton" class="main-btn" type="button">Try another scenario</button><button id="resultCategoriesButton" class="ghost" type="button">Choose another category</button><button id="resultMinigamesButton" class="ghost minigame-jump" type="button">Minigames →</button></div>
+    </div>
+
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- MINIGAMES MENU -->
+  <!-- ===================================================== -->
+  <section id="minigamesScreen" class="screen minigames-screen">
+    <div class="category-back-wrap">
+      <button class="tutorial-control back-intro" type="button">← Back to intro</button>
+    </div>
+    <div class="minigames-layout">
+      <div class="minigames-topline">
+        <button id="backToChallenges" class="ghost" type="button">← Challenges</button>
+        <span class="mini-kicker">ARCADE MODE</span>
+      </div>
+      <div class="minigames-title-wrap">
+        <p class="eyebrow">THE CODING CRYSIS</p>
+        <h2>Minigames</h2>
+        <p>Six different ways to test your cyber-safety skills.</p>
+      </div>
+      <div class="minigame-grid">
+        <button class="minigame-card detective-card" data-minigame="detective" type="button">
+          <span class="mini-number">01</span>
+          <span class="mini-pixel-icon">⌕</span>
+          <span class="mini-name">Detective Case Files</span>
+          <small>Investigate the evidence. Write your own conclusions.</small>
+        </button>
+        <button class="minigame-card dodge-card" data-minigame="dodge" type="button">
+          <span class="mini-number">02</span>
+          <span class="mini-pixel-icon">◆</span>
+          <span class="mini-name">Scam Dodge</span>
+          <small>Move fast. Dodge phishing hazards. Level up every 10 seconds.</small>
+        </button>
+        <button class="minigame-card maze-card" data-minigame="maze" type="button">
+          <span class="mini-number">03</span>
+          <span class="mini-pixel-icon">▦</span>
+          <span class="mini-name">Link Labyrinth</span>
+          <small>Navigate the maze and choose the safer URL gates.</small>
+        </button>
+        <button class="minigame-card rescue-card" data-minigame="rescue" type="button">
+          <span class="mini-number">04</span>
+          <span class="mini-pixel-icon">▣</span>
+          <span class="mini-name">Data Rescue</span>
+          <small>Recover compromised data, avoid the scammer, and lock them out.</small>
+        </button>
+        <button class="minigame-card firewall-card" data-minigame="firewall" type="button">
+          <span class="mini-number">05</span>
+          <span class="mini-pixel-icon">⚡</span>
+          <span class="mini-name">Firewall Rush</span>
+          <small>Run, jump, collect data chips, and escape the firewall before it catches you.</small>
+        </button>
+        <button class="minigame-card cyber-chase-card" data-minigame="cyberchase" type="button">
+          <span class="mini-number">06</span>
+          <span class="mini-pixel-icon">◎</span>
+          <span class="mini-name">Cyber Chase</span>
+          <small>Chase a scammer through the phone, enter apps, follow clues, and capture them.</small>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- DETECTIVE CASE FILES -->
+  <!-- ===================================================== -->
+  <section id="detectiveScreen" class="screen minigame-play-screen detective-screen">
+    <div class="minigame-nav">
+      <button class="ghost back-minigames" type="button">← Minigames</button>
+      <button class="tutorial-control back-intro" type="button">Back to intro</button>
+    </div>
+    <div class="minigame-play-layout">
+      <header class="mini-game-heading">
+        <div><p class="eyebrow">MINIGAME 01</p><h2>Detective Case Files</h2></div>
+        <div class="case-file-chip" id="detectiveCaseChip">CASE #001</div>
+      </header>
+      <div class="detective-intro">
+        <div><strong id="detectiveCaseTitle">Loading case...</strong><p id="detectiveCaseBrief"></p></div>
+        <button id="newDetectiveCase" class="ghost" type="button">New case ↻</button>
+      </div>
+      <section id="caseJourney" class="case-journey" aria-label="Case story">
+        <div id="caseStage" class="case-stage detective-board-stage">
+          <div id="caseWorld" class="case-world detective-board-world">
+            <div class="board-grain" aria-hidden="true"></div>
+            <svg id="casePathLines" class="case-path-lines" viewBox="0 0 2600 1700" aria-hidden="true"></svg>
+            <div id="caseStoryCards"></div>
+          </div>
+
+          <div class="board-focus-pin" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+
+        <div class="case-step-controls">
+          <div class="case-progress-text">
+            <span class="case-story-label">CASE RECONSTRUCTION</span>
+            <b id="caseStepLabel">Evidence 1 of 6</b>
+          </div>
+
+          <div class="case-click-hint">
+            <span class="case-click-dot"></span>
+            <span id="caseClickHintText">Click anywhere to follow the case</span>
+          </div>
+
+          <button id="detectiveNextClue" class="case-hidden-next" type="button" tabindex="-1" aria-hidden="true">
+            Next clue
+          </button>
+        </div>
+      </section>
+
+      <section id="detectiveReport" class="detective-report detective-report-hidden">
+        <div class="report-heading">
+          <span>INVESTIGATION TIME</span>
+          <small>Write naturally — the scanner looks for ideas, not one exact sentence.</small>
+        </div>
+        <label>What warning signs did you notice?
+          <textarea id="detectiveSigns" rows="3" placeholder="Example: I noticed..."></textarea>
+        </label>
+        <label>Which clue made you suspicious, and why?
+          <textarea id="detectiveKeyClue" rows="3" placeholder="Example: The sender looked suspicious because..."></textarea>
+        </label>
+        <label>How could the victim have avoided it?
+          <textarea id="detectivePrevention" rows="3" placeholder="Explain the safer action..."></textarea>
+        </label>
+        <button id="scanDetectiveAnswers" class="scan-button" type="button">SCAN ANSWERS</button>
+        <div id="detectiveScanResult" class="scan-result" aria-live="polite"></div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- SCAM DODGE -->
+  <!-- ===================================================== -->
+  <section id="dodgeScreen" class="screen minigame-play-screen dodge-screen">
+    <div class="minigame-nav">
+      <button class="ghost back-minigames" type="button">← Minigames</button>
+      <button class="tutorial-control back-intro" type="button">Back to intro</button>
+    </div>
+    <div class="minigame-play-layout arcade-layout">
+      <header class="mini-game-heading">
+        <div><p class="eyebrow">MINIGAME 02</p><h2>Scam Dodge</h2></div>
+        <div class="pixel-tag">PIXEL SURVIVAL</div>
+      </header>
+      <div class="arcade-hud">
+        <span>LEVEL <b id="dodgeLevel">1</b></span>
+        <span>TIME <b id="dodgeTime">0</b>s</span>
+        <span>LIVES <b id="dodgeLives">♥♥♥</b></span>
+        <span>SCORE <b id="dodgeScore">0</b></span>
+      </div>
+      <div class="canvas-shell">
+        <canvas id="dodgeCanvas" width="800" height="480" aria-label="Scam Dodge game"></canvas>
+        <div id="dodgeOverlay" class="game-overlay">
+          <div class="overlay-card"><span class="mini-pixel-icon">◆</span><h3>Scam Dodge</h3><p>Move with ← → or A / D. Dodge phishing hazards. Every 10 seconds, the level increases.</p><button id="startDodge" class="main-btn" type="button">Start game</button></div>
+        </div>
+      </div>
+      <div class="mobile-move-controls" aria-label="Scam Dodge controls">
+        <button id="dodgeLeft" type="button">◀</button>
+        <button id="dodgeRight" type="button">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- LINK LABYRINTH -->
+  <!-- ===================================================== -->
+  <section id="mazeScreen" class="screen minigame-play-screen maze-screen">
+    <div class="minigame-nav">
+      <button class="ghost back-minigames" type="button">← Minigames</button>
+      <button class="tutorial-control back-intro" type="button">Back to intro</button>
+    </div>
+    <div class="minigame-play-layout arcade-layout">
+      <header class="mini-game-heading">
+        <div><p class="eyebrow">MINIGAME 03</p><h2>Link Labyrinth</h2></div>
+        <div class="pixel-tag">URL MAZE</div>
+      </header>
+      <div class="maze-hud">
+        <span>LEVEL <b id="mazeLevel">1 / 3</b></span>
+        <span>LIVES <b id="mazeLives">♥♥♥</b></span>
+      </div>
+      <div id="mazeDoorLegend" class="maze-door-legend"></div>
+      <div class="canvas-shell maze-canvas-shell">
+        <canvas id="mazeCanvas" width="816" height="528" aria-label="Link Labyrinth game"></canvas>
+        <div id="mazeOverlay" class="game-overlay">
+          <div class="overlay-card"><span class="mini-pixel-icon">▦</span><h3>Link Labyrinth</h3><p>Use the arrow keys or WASD to move through the 2D maze. At each exit, inspect the URL and walk into the safer gate.</p><button id="startMaze" class="main-btn" type="button">Enter maze</button></div>
+        </div>
+      </div>
+      <p id="mazeMessage" class="maze-message" aria-live="polite">Choose the safer URL. A wrong gate costs one life.</p>
+      <div class="maze-pad" aria-label="Maze movement controls">
+        <button data-maze-move="up" type="button">▲</button>
+        <div><button data-maze-move="left" type="button">◀</button><button data-maze-move="down" type="button">▼</button><button data-maze-move="right" type="button">▶</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- DATA RESCUE -->
+  <!-- ===================================================== -->
+  <section id="rescueScreen" class="screen minigame-play-screen rescue-screen">
+    <div class="minigame-nav">
+      <button class="ghost back-minigames" type="button">← Minigames</button>
+      <button class="tutorial-control back-intro" type="button">Back to intro</button>
+    </div>
+
+    <div class="minigame-play-layout arcade-layout">
+      <header class="mini-game-heading">
+        <div>
+          <p class="eyebrow">MINIGAME 04</p>
+          <h2>Data Rescue</h2>
+        </div>
+        <div class="pixel-tag">STEALTH RESCUE</div>
+      </header>
+
+      <div class="rescue-hud">
+        <span>SECURED <b id="rescueSecured">0 / 4</b></span>
+        <span>ALERT <b id="rescueAlert">LOW</b></span>
+        <span>TIME <b id="rescueStatus">01:15</b></span>
+      </div>
+
+      <div class="rescue-objective">
+        <div class="rescue-objective-icon">◈</div>
+        <div>
+          <strong id="rescueObjectiveTitle">Recover the compromised data</strong>
+          <p id="rescueObjectiveText">Collect all four data fragments before the scammer catches you.</p>
+        </div>
+      </div>
+
+      <div class="canvas-shell rescue-canvas-shell">
+        <canvas id="rescueCanvas" width="3840" height="2160" aria-label="Data Rescue stealth game"></canvas>
+
+        <div id="rescueOverlay" class="game-overlay">
+          <div class="overlay-card rescue-overlay-card">
+            <span class="mini-pixel-icon">▣</span>
+            <h3>Data Rescue</h3>
+            <p>
+              Someone clicked a scam link and their private information is exposed.
+              Move through the phone, recover all four data fragments, avoid the scammer,
+              then reach the LOCKOUT zone to secure the account.
+            </p>
+            <p class="rescue-controls-note">Move with ← ↑ ↓ → or W A S D.</p>
+            <button id="startRescue" class="main-btn" type="button">Start rescue</button>
+          </div>
+        </div>
+      </div>
+
+      <p id="rescueMessage" class="maze-message" aria-live="polite">
+        Stay out of the scammer's range and recover the data.
+      </p>
+
+      <div class="rescue-control-cluster">
+        <button id="rescueActionButton" class="rescue-action-button" type="button">HOLD TO SECURE</button>
+        <div class="maze-pad rescue-pad" aria-label="Data Rescue movement controls">
+          <button data-rescue-move="up" type="button">▲</button>
+          <div>
+            <button data-rescue-move="left" type="button">◀</button>
+            <button data-rescue-move="down" type="button">▼</button>
+            <button data-rescue-move="right" type="button">▶</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===================================================== -->
+  <!-- FIREWALL RUSH -->
+  <!-- ===================================================== -->
+  <section id="firewallScreen" class="screen minigame-play-screen firewall-screen">
+    <div class="firewall-nav">
+      <button class="ghost back-minigames" type="button">← Minigames</button>
+      <button class="tutorial-control back-intro" type="button">Back to intro</button>
+    </div>
+
+    <div class="firewall-stage">
+      <canvas id="firewallCanvas" width="3840" height="2160" aria-label="Firewall Rush platform game"></canvas>
+
+      <div class="firewall-hud" aria-live="polite">
+        <span>DISTANCE <b id="firewallDistance">0 m</b></span>
+        <span>DATA <b id="firewallChips">0 / 12</b></span>
+        <span>LIVES <b id="firewallLives">♥♥♥</b></span>
+        <span>SHIELDS <b id="firewallShields">0</b></span>
+      </div>
+
+      <div id="firewallMission" class="firewall-mission">Collect 12 data chips and reach the SAFE ZONE.</div>
+
+      <div id="firewallOverlay" class="firewall-overlay">
+        <div class="firewall-overlay-card">
+          <div class="firewall-logo">⚡</div>
+          <span class="firewall-kicker">MINIGAME 05</span>
+          <h2>Firewall Rush</h2>
+          <p>
+            The firewall is sweeping through the system. Run and jump across the digital world,
+            collect <b>all 12 data chips</b>, grab shields, dodge malware, and reach the SAFE ZONE before it catches you. You have <b>3 lives</b>.
+          </p>
+          <div class="firewall-controls-line">
+            <span>← → / A D &nbsp; MOVE</span>
+            <span>SPACE / W / ↑ &nbsp; JUMP</span>
+          </div>
+          <button id="startFirewall" class="main-btn" type="button">START RUN</button>
+        </div>
+      </div>
+
+      <div class="firewall-mobile-controls" aria-label="Firewall Rush controls">
+        <div class="firewall-move-pair">
+          <button data-firewall-control="left" type="button">◀</button>
+          <button data-firewall-control="right" type="button">▶</button>
+        </div>
+        <button class="firewall-jump-button" data-firewall-control="jump" type="button">JUMP</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===================================================== -->
+  <!-- CYBER CHASE -->
+  <!-- ===================================================== -->
+  <section id="cyberChaseScreen" class="screen minigame-play-screen cyber-chase-screen">
+    <div class="chase-nav">
+      <button class="ghost back-minigames" type="button">← Minigames</button>
+      <button class="tutorial-control back-intro" type="button">Back to intro</button>
+    </div>
+
+    <div class="chase-phone-world">
+      <div class="chase-statusbar" aria-hidden="true">
+        <span>9:41</span>
+        <span>THE CODING CRYSIS</span>
+        <span>●●● &nbsp; Wi‑Fi &nbsp; ▰</span>
+      </div>
+
+      <div class="chase-hud" aria-live="polite">
+        <span>EVIDENCE <b id="chaseEvidence">0 / 5</b></span>
+        <span>SIGNAL <b id="chaseSignal">FAINT</b></span>
+        <span>CURRENT APP <b id="chaseCurrentApp">HOME</b></span>
+      </div>
+
+      <div id="chaseHomeView" class="chase-view chase-home-view">
+        <div class="chase-story-panel">
+          <div class="chase-hero-art" aria-hidden="true">
+            <div class="hero-cape"></div>
+            <div class="hero-body"></div>
+            <div class="hero-head">
+              <div class="hero-hair"></div>
+              <i class="eye e1"></i><i class="eye e2"></i>
+            </div>
+            <div class="hero-magnifier"></div>
+          </div>
+          <div>
+            <p class="chase-kicker">MINIGAME 06</p>
+            <h2>Cyber Chase</h2>
+            <p id="chaseHomeMessage">A scammer broke into the phone. Follow their digital trail through the apps and catch them before they disappear.</p>
+          </div>
+          <div class="chase-scammer-art" aria-hidden="true">
+            <div class="scammer-glitch g1"></div><div class="scammer-glitch g2"></div>
+            <div class="scammer-hood"></div>
+            <div class="scammer-face"><i></i><i></i></div>
+          </div>
+        </div>
+
+        <div class="chase-app-grid" id="chaseAppGrid">
+          <button class="chase-app" data-chase-app="messages" type="button"><span class="app-symbol">💬</span><b>Messages</b><small>Chats</small></button>
+          <button class="chase-app" data-chase-app="browser" type="button"><span class="app-symbol">◎</span><b>Browser</b><small>Tabs</small></button>
+          <button class="chase-app" data-chase-app="files" type="button"><span class="app-symbol">📁</span><b>Files</b><small>Storage</small></button>
+          <button class="chase-app" data-chase-app="photos" type="button"><span class="app-symbol">✿</span><b>Photos</b><small>Gallery</small></button>
+          <button class="chase-app" data-chase-app="settings" type="button"><span class="app-symbol">⚙</span><b>Settings</b><small>Security</small></button>
+          <button class="chase-app" data-chase-app="mail" type="button"><span class="app-symbol">✉</span><b>Mail</b><small>Inbox</small></button>
+        </div>
+
+        <div class="chase-trail-line">
+          <span class="trail-dot active"></span><i></i><span class="trail-dot"></span><i></i><span class="trail-dot"></span><i></i><span class="trail-dot"></span><i></i><span class="trail-dot"></span><i></i><span class="trail-dot"></span>
+        </div>
+      </div>
+
+      <div id="chaseAppView" class="chase-view chase-app-view hidden">
+        <div class="chase-app-window">
+          <div class="chase-app-window-top">
+            <button id="chaseBackHome" class="chase-home-button" type="button">‹ Home</button>
+            <div class="chase-app-identity"><span id="chaseSceneIcon">💬</span><b id="chaseSceneTitle">Messages</b></div>
+            <span id="chaseSceneBadge" class="chase-scene-badge">SEARCHING</span>
+          </div>
+          <div id="chaseSceneBody" class="chase-scene-body"></div>
+        </div>
+      </div>
+
+      <div id="chaseClueOverlay" class="chase-clue-overlay hidden">
+        <div class="chase-clue-card">
+          <div class="clue-scan">✓ TRACE FOUND</div>
+          <h3 id="chaseClueTitle">Evidence secured</h3>
+          <p id="chaseClueText"></p>
+          <button id="chaseContinue" class="main-btn" type="button">Follow the trail →</button>
+        </div>
+      </div>
+
+      <div id="chaseIntroOverlay" class="chase-intro-overlay">
+        <div class="chase-intro-card">
+          <div class="chase-intro-avatar" aria-hidden="true">
+            <div class="mini-hair"></div><div class="mini-face">•‿•</div><div class="mini-coat"></div>
+          </div>
+          <p class="chase-kicker">FINAL MINIGAME</p>
+          <h2>Cyber Chase</h2>
+          <p>
+            A scammer is hiding inside the phone. Enter the apps, investigate what they left behind,
+            collect <b>5 pieces of evidence</b>, and corner them in the final app.
+          </p>
+          <div class="chase-rules"><span>ENTER APPS</span><span>FOLLOW CLUES</span><span>CAPTURE SCAMMER</span></div>
+          <button id="startCyberChase" class="main-btn" type="button">START THE CHASE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<audio id="victorySound" src="assets/victory.mp3" preload="auto"></audio>
+<audio id="detectiveMysterySound" src="assets/detective-mystery.mp3" preload="auto"></audio>
+<script src="script.js"></script>
+</body>
+</html>
